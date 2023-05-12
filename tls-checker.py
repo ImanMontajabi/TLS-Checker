@@ -31,7 +31,7 @@ for i in range(0, how_many, length):
 def get_info(web_addrs: list) -> dict:
     port = 443
     context = ssl.create_default_context()
-    context.set_alpn_protocols(['h2', 'http/1.1'])
+    context.set_alpn_protocols(['h2', 'http/1.1', 'h3'])
     result = {}
     for web_addr in web_addrs:
         try:
@@ -42,7 +42,7 @@ def get_info(web_addrs: list) -> dict:
         else:
             cipher = conn.cipher()
             alpn = conn.selected_alpn_protocol()
-            if (cipher[1] == 'TLSv1.3') and (alpn == 'h2'):
+            if (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3')):
                 issuer = conn.getpeercert()['issuer'][1][0][1]
                 print(f'address = {web_addr}\nalpn = {conn.selected_alpn_protocol()}\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}\nkey_length = {cipher[2]}\n---------------------')
                 result[web_addr] = [issuer, alpn, cipher[0], cipher[1], cipher[2]]
