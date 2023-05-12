@@ -1,0 +1,176 @@
+[
+    {
+        "nic.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.hk": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "digicert.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "goo.gl": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "googledomains.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google-analytics.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mozilla.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "spotify.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "cloudflare.net": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "tumblr.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "skype.com": [
+            "Microsoft Corporation",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "icloud.com": [
+            "Apple Inc.",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "canva.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "google.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "microsoft.com": [
+            "Microsoft Corporation",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "cloudflare.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wikipedia.org": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "yahoo.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "googletagmanager.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "doubleclick.net": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "github.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "pinterest.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wordpress.org": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "zoom.us": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    }
+]
