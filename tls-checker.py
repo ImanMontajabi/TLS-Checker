@@ -57,4 +57,4 @@ with concurrent.futures.ThreadPoolExecutor() as executer:
         result = task.result()
         outlist.append(result)
 with open('./result.json', 'w') as f:
-    json.dump(outlist, f, ensure_ascii=False, indent=4)
+    json.dump(outlist[0], f, ensure_ascii=False, indent=4)
