@@ -1,28 +1,5 @@
 [
     {
-        "nic.ru": [
-            "GlobalSign nv-sa",
-            "h2",
-            "TLS_AES_256_GCM_SHA384",
-            "TLSv1.3",
-            256
-        ],
-        "google.com.hk": [
-            "Google Trust Services LLC",
-            "h2",
-            "TLS_AES_256_GCM_SHA384",
-            "TLSv1.3",
-            256
-        ],
-        "digicert.com": [
-            "DigiCert Inc",
-            "h2",
-            "TLS_AES_128_GCM_SHA256",
-            "TLSv1.3",
-            128
-        ]
-    },
-    {
         "goo.gl": [
             "Google Trust Services LLC",
             "h2",
@@ -87,6 +64,336 @@
             128
         ],
         "canva.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "google.co.uk": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "googleadservices.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ilovepdf.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "kaspersky.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_CHACHA20_POLY1305_SHA256",
+            "TLSv1.3",
+            256
+        ],
+        "hubspot.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "doi.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "weather.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "windows.com": [
+            "Microsoft Corporation",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "cloudns.net": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "espn.com": [
+            "Entrust, Inc.",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "ok.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "trello.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "app-measurement.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "github.io": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "dnsmadeeasy.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "datadoghq.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "indeed.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "meraki.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "gstatic.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "roblox.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "w3.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sberdevices.ru": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sciencedirect.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "googleapis.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sourceforge.net": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "booking.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "googlesyndication.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "reg.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.de": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "amazonvideo.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "blogger.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "atlassian.net": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wsj.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "r3.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "creativecommons.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ibm.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "duckduckgo.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "who.int": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "tradingview.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "teamviewer.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "slack.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "deepl.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "google.co.in": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wikimedia.org": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "tiktokv.com": [
+            "DigiCert, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "discord.com": [
             "Cloudflare, Inc.",
             "h2",
             "TLS_AES_256_GCM_SHA384",
@@ -167,6 +474,3111 @@
         ],
         "zoom.us": [
             "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "ampproject.org": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "avito.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "namu.wiki": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "onlyfans.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "criteo.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "pki.goog": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "figma.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "eventbrite.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "nic.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.hk": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "digicert.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "medium.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "gravatar.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "zemanta.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "yahoo.co.jp": [
+            "Cybertrust Japan Co., Ltd.",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "apache.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "lencr.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "myshopify.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "google.ca": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "markmonitor.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "yandex.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "hotjar.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "box.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wikihow.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "academia.edu": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "sedo.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "free.fr": [
+            "DigiCert, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "patreon.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ubuntu.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "calendly.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "marriott.com": [
+            "Entrust, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "healthline.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "netangels.ru": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "squarespace.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "ea.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "upwork.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "digikala.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "expedia.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "pinimg.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "techcrunch.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "zillow.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "roku.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "tandfonline.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "debian.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "investopedia.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ngenix.net": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.ru": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "business.site": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sumup.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_CHACHA20_POLY1305_SHA256",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.tw": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "aips-services.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "hbr.org": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "nypost.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "investing.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "trendmicro.com": [
+            "Entrust, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "avito.st": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "savefrom.net": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "bluehost.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.co.jp": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "npr.org": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "cnet.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "time.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "surveymonkey.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "udemy.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "notion.so": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "hostgator.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "aol.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "casalemedia.com": [
+            "Arizona",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "dns.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "themeforest.net": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "g.page": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "typeform.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "1c.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "mailchimp.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "addtoany.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "dribbble.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "atlassian.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "android.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "coinmarketcap.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "fda.gov": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "coursera.org": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "addthis.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "bandcamp.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "discord.gg": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "galaxydata.ru": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_CHACHA20_POLY1305_SHA256",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "quillbot.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "economist.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "envato.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "marketwatch.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "mdpi.com": [
+            "ZeroSSL",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "allaboutcookies.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "appspot.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.fr": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "bestbuy.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "chess.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mts.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "nest.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "nike.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "akismet.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.mx": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "vmware.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "media.net": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ertelecom.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "greasyfork.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wiktionary.org": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "google.cn": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mashable.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "plos.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "typepad.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "accuweather.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "gofundme.com": [
+            "Arizona",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "ox.ac.uk": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sciencedaily.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "aparat.com": [
+            "Unizeto Technologies S.A.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "uber.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "coupang.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "homedepot.com": [
+            "Entrust, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wpengine.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "abc.net.au": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sophos.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ikea.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "asus.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "cbc.ca": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "jetbrains.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "sensic.net": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "swrve.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "canonical.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "dyndns.org": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "onetrust.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "jb51.net": [
+            "TrustAsia Technologies, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "v2ex.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "nba.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ui.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "reverso.net": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "fontawesome.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "klaviyo.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "cloudinary.com": [
+            "Arizona",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "substack.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "getpocket.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "apnews.com": [
+            "Entrust, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "digg.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "evernote.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "npmjs.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "yimg.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "doubleverify.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "bmj.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "gmail.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "jotform.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "zxx.edu.cn": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mozilla.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "paloaltonetworks.com": [
+            "Arizona",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "merriam-webster.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "dreamhost.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "sharethrough.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mercadolibre.com.ar": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "rt.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "smartadserver.com": [
+            "Arizona",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "zdnet.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.co.kr": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.co.th": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "zerodha.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "fortune.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "bitbucket.org": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "hdfcbank.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "vungle.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "dnsimple.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "spiegel.de": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.tr": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "pewresearch.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.es": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "engadget.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "example.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "cam.ac.uk": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "criteo.net": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "youronlinechoices.com": [
+            "Arizona",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "glassdoor.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ftc.gov": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "readthedocs.io": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "kdocs.cn": [
+            "DigiCert, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "braze.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "justhost.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "constellix.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "lwsdns.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "elegantthemes.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "arnebrachhold.de": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "t-mobile.com": [
+            "Entrust, Inc.",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "crashlytics.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.it": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ys7.com": [
+            "Entrust, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.br": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "entergy.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wowhead.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "medicalnewstoday.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "feedburner.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "webpkgcache.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "getbootstrap.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "plesk.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "xbox.com": [
+            "Microsoft Corporation",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "utexas.edu": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "gamespot.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "hostinger.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "primevideo.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "google.com.au": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "openstreetmap.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "tinkoff.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "ufl.edu": [
+            "MI",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "pcmag.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "acronis.com": [
+            "Arizona",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "semrush.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mercadolibre.com.mx": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "siemens.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "starbucks.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "gotowebinar.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "hostgator.com.br": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "jstor.org": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "perfectdomain.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "nextdoor.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "sap.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "brave.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "miro.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "gogoanime.bid": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "lijit.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "supjav.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mangaraw.to": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "superhosting.bg": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wps.cn": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "pendo.io": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "payoneer.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "indiegogo.com": [
+            "ZeroSSL",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "dnsdomen.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "howstuffworks.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "ucdavis.edu": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "dhs.gov": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sec.gov": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "globenewswire.com": [
+            "DE",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "acs.org": [
+            "Arizona",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "torob.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "optimizely.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "variety.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "cookielaw.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ubi.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "codepen.io": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "rapyd.net": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "bizjournals.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "freshdesk.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "wise.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "opensea.io": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "unc.edu": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "postgresql.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "jino.ru": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "rapid7.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "bugsnag.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "archiveofourown.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "techradar.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "feedly.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.sa": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "thoughtco.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "msu.edu": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "fool.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "above.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "umd.edu": [
+            "MI",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "aboutcookies.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "cookiedatabase.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "domainmarket.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "chapmanganato.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "crunchbase.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sketchfab.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "smallpdf.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "trendyol.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "allegro.pl": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "arlo.com": [
+            "Entrust, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "www.nhs.uk": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "stackadapt.com": [
+            "Paris",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "themeisle.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "medallia.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "aliexpress.us": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "hootsuite.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "squareup.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sbb.ch": [
+            "SwissSign AG",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "bitdefender.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "pwc.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "for-j.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "as.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ringcentral.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "hh.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "earthlink.net": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "web.dev": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "ssrn.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "digitaltrends.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ctrip.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "hm.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mlb.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "urbandictionary.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "googleblog.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "scmp.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "monday.com": [
+            "Arizona",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "lowes.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "lww.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "bigcommerce.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mercari.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "venturebeat.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "proton.me": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "automattic.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "basecamp.com": [
+            "DigiCert, Inc.",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "semanticscholar.org": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "zapier.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "a-ads.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "moneycontrol.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "woocommerce.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "slashdot.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "xero.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "acm.org": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "convertio.co": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "loom.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "netscape.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "withgoogle.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "9animetv.to": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "auth0.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "clever.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "thehill.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "hoster.kz": [
+            "DigiCert, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "buydomains.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ucoz.ru": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "globalnews.ca": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "aol.co.uk": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "rutracker.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "lefigaro.fr": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "quantummetric.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "volusion.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "collegeboard.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mixpanel.com": [
+            "DigiCert, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "hotmart.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "viber.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "moodle.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "nalog.ru": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "midjourney.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "gallup.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "clevelandclinic.org": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "teachable.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "wa.gov": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "libsyn.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "lastpass.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "freecodecamp.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "66law.cn": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ctfile.com": [
+            "Riga",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "skyeng.ru": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "doubleclick.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "register.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "hatenablog.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "redbubble.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "metro.co.uk": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "medlineplus.gov": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "google.com.eg": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "fifa.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "fedoraproject.org": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "shipt.com": [
+            "DigiCert, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "intercom.io": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "one.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "btnull.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "nasdaq.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "xe.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "huggingface.co": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "repubblica.it": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "doordash.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "magento.cloud": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "aarp.org": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "fcc.gov": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "apachefriends.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.co.id": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "pypi.org": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "home.pl": [
+            "Unizeto Technologies S.A.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "zoominfo.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "uberinternal.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "clickup.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "ico.org.uk": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "yahoo.net": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "indianexpress.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "foursquare.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "cbr.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "weather.gov": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "appismy.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "parallels.com": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "gumgum.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "gamewith.jp": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "ahrefs.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "leetcode.cn": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "nodejs.org": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "garmin.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "moz.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.nl": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "iherb.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.ar": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "intercom.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "georgetown.edu": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "technologyreview.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "houzz.com": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "fbsbx.com": [
+            "DigiCert Inc",
+            "h2",
+            "TLS_CHACHA20_POLY1305_SHA256",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "twilio.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "sendbird.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "futbin.com": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "dynamics.com": [
+            "Microsoft Corporation",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "malwarebytes.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "ampproject.net": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "soap2day.to": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "kahoot.it": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "kde.org": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "anydesk.com": [
+            "DigiCert, Inc.",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "joomla.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "playrix.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "podbean.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "simpli.fi": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "zynga.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ]
+    },
+    {
+        "heart.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "vecteezy.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.vn": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "consumerreports.org": [
+            "Greater Manchester",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "coingecko.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "letsencrypt.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "fbi.gov": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "mcmod.cn": [
+            "DigiCert, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "hse.ru": [
+            "GlobalSign nv-sa",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "iop.org": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.pl": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "drctcldfa.com": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ]
+    },
+    {
+        "codecanyon.net": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "sba.gov": [
+            "Let's Encrypt",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "myfitnesspal.com": [
+            "Amazon",
+            "h2",
+            "TLS_AES_128_GCM_SHA256",
+            "TLSv1.3",
+            128
+        ],
+        "5ch.net": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "google.com.ua": [
+            "Google Trust Services LLC",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "asurascans.com": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256
+        ],
+        "ucsb.edu": [
+            "Let's Encrypt",
             "h2",
             "TLS_AES_256_GCM_SHA384",
             "TLSv1.3",

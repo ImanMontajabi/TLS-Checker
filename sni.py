@@ -16,7 +16,7 @@ with open(f'./{file_name}.csv') as urls:
 len_webaddr = len(web_addrs)
 # take length of csv chunk
 try:
-    how_many = int(input(f'\nHow many url do you want to check?[1-{len_webaddr}]:'))
+    how_many = int(input(f'\nHow many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:'))
 except ValueError:
     how_many = len_webaddr
 
