@@ -21,4 +21,4 @@ python tls_checker.py
 - The script will also create a JSON file named "result.json" in the same directory as the script. This file will contain the results of the website checks.
 
 # License
-TLS Checker is licensed under the MIT License. See LICENSE for more information.
+TLS Checker is licensed under the MIT License. See LICENSE for [more information](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
