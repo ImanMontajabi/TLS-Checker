@@ -12,7 +12,7 @@ Download or clone the repository to your local machine.
 Open a terminal and navigate to the directory containing the script.
 Run the script with the following command:
 ```
-python tls_checker.py
+python tls-checker.py
 ```
 
 - The script will prompt you for the name of the CSV file containing the list of websites you want to check. The CSV file should contain one website per row, with no headers.
