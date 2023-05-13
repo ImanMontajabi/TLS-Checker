@@ -44,12 +44,12 @@ def get_info(web_addrs: list) -> dict:
     result = {}
     for web_addr in web_addrs:
         try:
-            sock = socket.create_connection((web_addr, port), timeout=5)
+            sock = socket.create_connection((web_addr, port), timeout=10)
             conn = context.wrap_socket(sock, server_hostname=web_addr)
             resolve_server = dns.resolver.resolve(web_addr)
             ip_server = [rdata for rdata in resolve_server]
             url = f'https://api.findip.net/{ip_server[0]}/?token={api_token}'
-            response = requests.get(url, timeout= 5).json()
+            response = requests.get(url, timeout=10).json()
         except:
             continue
         else:
