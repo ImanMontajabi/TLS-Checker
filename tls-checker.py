@@ -9,7 +9,7 @@ import random
 
 
 web_addrs = [] # all urls from csv
-take_file_name = input('- Which file? [irani or all]: ')
+take_file_name = input('\033[34m- Which file? [irani or all]:\033[0m')
 file_name = take_file_name if (take_file_name == 'irani') or (take_file_name == 'all') else 'all'
 with open(f'./{file_name}.csv') as urls:
     csv_reader = csv.reader(urls)
@@ -20,7 +20,7 @@ random.shuffle(web_addrs)
 # take length of csv chunk
 input_urls = [] # list for threads
 try:
-    how_many = int(input(f'\n- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:'))
+    how_many = int(input(f'\033[34m- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:\033[0m'))
 except ValueError:
     how_many = len_webaddr
 
@@ -31,8 +31,10 @@ length = 20 if how_many >= 20 else 1
 for i in range(0, how_many, length):
     input_urls.append(web_addrs[i:min(i+length, how_many)])
 # set iso code
-take_iso_name = input('\nHint: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes\n- preferred country? [Germany = DE, Netherland = NL, ...]:')
-print('=====================', end='')
+print('\033[31;1mHint:\033[0m', end=' ')
+print('\033[33mhttps://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes\033[0m')
+take_iso_name = input('\033[34m- preferred country? [Germany = DE, Netherland = NL, ...]:\033[0m')
+print('\033[36m======================\033[0m', end='')
 
 
 def get_info(web_addrs: list) -> dict:
@@ -61,7 +63,7 @@ def get_info(web_addrs: list) -> dict:
                     city = response['city']['names']['en']
                     isp = response['traits']['isp']
                     issuer = conn.getpeercert()['issuer'][1][0][1]
-                    print(f'address = {web_addr}\nalpn = {conn.selected_alpn_protocol()}\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}\nkey_length = {cipher[2]}\ncountry = {country}\niso_code = {iso_code}\ncity = {city}\nisp = {isp}\n---------------------')
+                    print(f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}\nkey_length = {cipher[2]}\ncountry = {country}\niso_code = {iso_code}\ncity = {city}\nisp = {isp}\n\033[36m---------------------\033[0m', end='')
                     result[web_addr] = [issuer, alpn, cipher[0], cipher[1], cipher[2], country, iso_code, city, isp]
                 else:
                     continue
@@ -71,7 +73,7 @@ def get_info(web_addrs: list) -> dict:
                     city = response['city']['names']['en']
                     isp = response['traits']['isp']
                     issuer = conn.getpeercert()['issuer'][1][0][1]
-                    print(f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}\nkey_length = {cipher[2]}\ncountry = {country}\niso_code = {iso_code}\ncity = {city}\nisp = {isp}\n---------------------', end='')
+                    print(f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}\nkey_length = {cipher[2]}\ncountry = {country}\niso_code = {iso_code}\ncity = {city}\nisp = {isp}\n\033[36m---------------------\033[0m', end='')
                     result[web_addr] = [issuer, alpn, cipher[0], cipher[1], cipher[2], country, iso_code, city, isp]
                 else:
                     continue
