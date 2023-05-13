@@ -7,7 +7,6 @@ To use TLS Checker, you will need Python 3.7 or later. You can download Python f
 # Usage
 - Download or clone the repository to your local machine.<br>
 - Open a terminal and navigate to the directory containing the script.<br>
-- Please use IDLE shell or power shell and not CMD 🙂<br>
 - Run the script with the following command:
 
 first:
