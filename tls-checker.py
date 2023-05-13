@@ -31,8 +31,7 @@ length = 20 if how_many >= 20 else 1
 for i in range(0, how_many, length):
     input_urls.append(web_addrs[i:min(i+length, how_many)])
 # set iso code
-print('Hint:', end=' ')
-print('https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
+print('Hint: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
 take_iso_name = input('preferred country? [Germany = DE, Netherland = NL, ...]:')
 print('======================', end='')
 

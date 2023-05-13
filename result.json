@@ -1,17 +1,29 @@
 [
     {},
-    {},
     {
-        "8883661.fls.doubleclick.net": [
+        "featuredemagazine.com": [
             "Google Trust Services LLC",
             "h2",
             "TLS_AES_256_GCM_SHA384",
             "TLSv1.3",
             256,
-            "Germany",
-            "DE",
-            "Frankfurt am Main",
-            "Google LLC"
+            "Canada",
+            "CA",
+            "Toronto",
+            "Cloudflare, Inc."
+        ]
+    },
+    {
+        "ourcatholicradio.org": [
+            "Cloudflare, Inc.",
+            "h2",
+            "TLS_AES_256_GCM_SHA384",
+            "TLSv1.3",
+            256,
+            "Canada",
+            "CA",
+            "Toronto",
+            "Cloudflare, Inc."
         ]
     },
     {},
