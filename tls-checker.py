@@ -35,7 +35,6 @@ for i in range(0, how_many, length):
 print('* Hint: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
 take_iso_name = input('- preferred country? [Germany = DE, Netherland = NL, ...]:')
 
-
 def get_info(web_addrs: list) -> dict:
     api_token = '3bd22fe89c5c42d386d84297d53389d3'
     port = 443
@@ -80,7 +79,6 @@ def get_info(web_addrs: list) -> dict:
                     continue
     return result
 
-   
 outlist = []
 with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executer:
     tasks = [executer.submit(get_info, url_group) for url_group in input_urls]
