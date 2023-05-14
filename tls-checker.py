@@ -6,7 +6,7 @@ import concurrent.futures
 import dns.resolver
 import requests
 import random
-
+from progressbar import progressbar
 
 web_addrs = [] # all urls from csv
 take_file_name = input('Which file? [irani or all]:')
@@ -79,9 +79,9 @@ def get_info(web_addrs: list) -> dict:
     return result
         
 outlist = []
-with concurrent.futures.ThreadPoolExecutor() as executer:
+with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executer:
     tasks = [executer.submit(get_info, url_group) for url_group in input_urls]
-    for task in concurrent.futures.as_completed(tasks):
+    for task in progressbar(concurrent.futures.as_completed(tasks), redirect_stdout=True):
         result = task.result()
         outlist.append(result)
 with open('./result.json', 'w', encoding='utf-8') as f:
