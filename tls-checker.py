@@ -42,7 +42,9 @@ def get_info(web_addrs: list) -> dict:
     context = ssl.create_default_context()
     context.set_alpn_protocols(['h2', 'http/1.1', 'h3'])
     result = {}
+    spinner = PixelSpinner('------------------------- Searching ')
     for web_addr in web_addrs:
+        spinner.next()
         try:
             sock = socket.create_connection((web_addr, port), timeout=5)
             conn = context.wrap_socket(sock, server_hostname=web_addr)
