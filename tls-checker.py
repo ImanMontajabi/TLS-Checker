@@ -28,7 +28,7 @@ except ValueError:
 how_many = max(how_many, 1)
 how_many = min(how_many, len_webaddr)
 # make input of threads
-length = 20 if how_many >= 20 else 1
+length = 30 if how_many >= 30 else 1
 for i in range(0, how_many, length):
     input_urls.append(web_addrs[i:min(i+length, how_many)])
 # set iso code
