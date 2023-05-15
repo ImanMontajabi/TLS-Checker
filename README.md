@@ -20,7 +20,8 @@ python tls-checker.py
 
 - The script will prompt you for the name of the CSV file containing the list of websites you want to check. The CSV file should contain one website per row, with no headers.
 - The script will then prompt you for the number of websites you want to check. This number should be between 1 and the total number of websites in the CSV file.
-- The script will then prompt you for the iso-ode of server location (Iran = IR, Germany = DE,....)
+- The script will then prompt you for the iso-code of server location (Iran = IR, Germany = DE,....)
+- Hint: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 - The script will then begin checking the websites and print the results to the console.
 - The script will also create a JSON file named "result.json" in the same directory as the script. This file will contain the results of the website checks.
 
