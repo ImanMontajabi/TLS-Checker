@@ -10,7 +10,7 @@ from progress.spinner import PixelSpinner
 
 
 web_addrs = [] # all urls from csv
-print('\n** You can ignore the questions and just press Enter. **\n')
+print('\n** You can ignore the questions and just press Enter **\n')
 take_file_name = input('- Which file? [irani or all]:').strip()
 file_name = take_file_name if (take_file_name == 'irani') or (take_file_name == 'all') else 'all'
 with open(f'./{file_name}.csv') as urls:
