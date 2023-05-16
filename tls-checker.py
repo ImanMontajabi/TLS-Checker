@@ -11,7 +11,7 @@ from progress.spinner import PixelSpinner
 
 web_addrs = [] # all urls from csv
 print('\n** You can ignore the questions and just press Enter **\n')
-take_file_name = input('- Which file? [irani or all]:').strip()
+take_file_name = input('- Which file? [irani or all]:').strip().lower()
 file_name = take_file_name if (take_file_name == 'irani') or (take_file_name == 'all') else 'all'
 with open(f'./{file_name}.csv') as urls:
     csv_reader = csv.reader(urls)
@@ -34,7 +34,7 @@ for i in range(0, how_many, length):
     input_urls.append(web_addrs[i:min(i+length, how_many)])
 # set iso code
 print('* Guidance: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
-take_iso_name = input('- preferred country? [Germany = DE, Netherland = NL, ...]:').strip()
+take_iso_name = input('- preferred country? [Germany = DE, Netherland = NL, ...]:').strip().upper()
 
 def get_info(web_addrs: list) -> dict:
     api_token = '3bd22fe89c5c42d386d84297d53389d3'
