@@ -1,6 +1,9 @@
 # TLS Checker 🚬
 TLS Checker is a Python script for checking the Transport Layer Security (TLS) version and security settings of a list of websites. The script uses multithreading to speed up the process of checking a large number of websites.
 
+[نمونه خروجی](https://github.com/ImanMontajabi/TLS-Checker/blob/master/result.json)
+
+
 # Installation
 To use TLS Checker, you will need Python 3.7 or later. You can download Python from the official website: https://www.python.org/downloads/
 
