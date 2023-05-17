@@ -15,10 +15,10 @@ except ImportError:
 
 
 
-web_addrs = [] # all urls from csv
 print('\n** You can ignore the questions and just press Enter **\n')
 take_file_name = input('- Which file? [irani or all]:').strip().lower()
 file_name = take_file_name if (take_file_name == 'irani') or (take_file_name == 'all') else 'all'
+web_addrs = [] # all urls from csv
 with open(f'./{file_name}.csv') as urls:
     csv_reader = csv.reader(urls)
     for row in csv_reader:
