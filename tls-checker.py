@@ -1,12 +1,18 @@
 import ssl
 import socket
+import sys
 import csv
 import json
 import concurrent.futures
-import dns.resolver
-import requests
 import random
-from progress.spinner import PixelSpinner
+try:
+    import dns.resolver
+    import requests
+    from progress.spinner import PixelSpinner
+except ImportError:
+    print('\n ** Please install required modules: pip install -r requirements.txt **')
+    sys.exit(1)
+
 
 
 web_addrs = [] # all urls from csv
