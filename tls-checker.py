@@ -57,20 +57,22 @@ len_webaddr = len(web_addrs)
 input_urls = [] # list for threads
 try:
     how_many = int(input(f'- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:').strip())
+    print(f'+ {how_many} urls are selected.')
 except ValueError:
     how_many = len_webaddr
+    print(f'+ {how_many} urls are selected.')
 
 how_many = max(how_many, 1)
 how_many = min(how_many, len_webaddr)
 randomized = input('- Do you want to use randomized search? [y=YES, n=NO]:').strip().lower()
 if randomized == 'y':
     random.shuffle(web_addrs)
-    print('+ Randomized search is selected')
+    print('+ Randomized search is selected.')
 elif randomized == 'n':
-    print('+ Normal search is selected')
+    print('+ Normal search is selected.')
 else:
     random.shuffle(web_addrs)
-    print('+ Randomized search is selected')
+    print('+ Randomized search is selected.')
 # make input of threads
 length = 30 if how_many >= 30 else 1
 for i in range(0, how_many, length):
