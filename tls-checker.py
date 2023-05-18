@@ -9,6 +9,7 @@ try:
     import dns.resolver
     import requests
     from progress.spinner import PixelSpinner
+    import patoolib
 except ImportError:
     print('\n** Please install required modules: pip install -r requirements.txt **')
     install = input('- Would you like to install requirements automatically? [y=YES, n=NO]:').strip().lower()
@@ -18,6 +19,7 @@ except ImportError:
         import dns.resolver
         import requests
         from progress.spinner import PixelSpinner
+        import patoolib
     elif install == 'n':
         sys.exit(0)
     else:
@@ -32,11 +34,19 @@ elif take_file_name == '1':
     file_name = 'file1'
 else:
     file_name = 'file2'
-web_addrs = [] # all urls from csv
-with open(f'./{file_name}.csv') as urls:
-    csv_reader = csv.reader(urls)
-    for row in csv_reader:
-        web_addrs.append(row[0])
+try:
+    web_addrs = [] # all urls from csv
+    with open(f'./{file_name}.csv') as urls:
+        csv_reader = csv.reader(urls)
+        for row in csv_reader:
+            web_addrs.append(row[0])
+except FileNotFoundError:
+    patoolib.extract_archive("csvfiles.rar", outdir=".")
+    web_addrs = [] # all urls from csv
+    with open(f'./{file_name}.csv') as urls:
+        csv_reader = csv.reader(urls)
+        for row in csv_reader:
+            web_addrs.append(row[0])
 len_webaddr = len(web_addrs)
 # take length of csv chunk
 input_urls = [] # list for threads
