@@ -33,7 +33,6 @@ with open(f'./{file_name}.csv') as urls:
     for row in csv_reader:
         web_addrs.append(row[0])
 len_webaddr = len(web_addrs)
-random.shuffle(web_addrs)
 # take length of csv chunk
 input_urls = [] # list for threads
 try:
@@ -43,6 +42,13 @@ except ValueError:
 
 how_many = max(how_many, 1)
 how_many = min(how_many, len_webaddr)
+randomized = input('- Do you want to use randomized search? [y=YES, n=NO]:').strip().lower()
+if randomized == 'y':
+    random.shuffle(web_addrs)
+elif randomized == 'n':
+    print('+ Normal search is selected')
+else:
+    random.shuffle(web_addrs)
 # make input of threads
 length = 30 if how_many >= 30 else 1
 for i in range(0, how_many, length):
