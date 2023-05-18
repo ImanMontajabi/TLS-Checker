@@ -3,6 +3,8 @@ TLS Checker is a Python script for checking the Transport Layer Security (TLS) v
 
 [نمونه خروجی قابل استفاده](https://github.com/ImanMontajabi/TLS-Checker/blob/master/result.json)
 
+حجم فایل‌ها تقریبا 33mb است
+
 
 # Installation
 To use TLS Checker, you will need Python 3.7 or later. You can download Python from the official website: https://www.python.org/downloads/
