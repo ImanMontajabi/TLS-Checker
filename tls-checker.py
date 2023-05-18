@@ -5,6 +5,7 @@ import csv
 import json
 import concurrent.futures
 import random
+import os
 try:
     import dns.resolver
     import requests
@@ -41,7 +42,8 @@ try:
         for row in csv_reader:
             web_addrs.append(row[0])
 except FileNotFoundError:
-    patoolib.extract_archive("csvfiles.rar", outdir=".")
+    patoolib.extract_archive("./csvfiles.zip", outdir=".")
+    os.remove('./csvfiles.zip')
     web_addrs = [] # all urls from csv
     with open(f'./{file_name}.csv') as urls:
         csv_reader = csv.reader(urls)
