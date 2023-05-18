@@ -14,7 +14,7 @@ except ImportError:
     install = input('- Would you like to install requirements automatically? [y=YES, n=NO]:').strip().lower()
     if install == 'y':
         import subprocess
-        subprocess.run('pip install -r requirements.txt'.split(' '))
+        subprocess.run('pip3 install -r requirements.txt'.split(' '))
         import dns.resolver
         import requests
         from progress.spinner import PixelSpinner
