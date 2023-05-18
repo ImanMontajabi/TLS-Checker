@@ -27,6 +27,7 @@ except ImportError:
         sys.exit(1)
 
 
+
 print('\n** You can ignore the questions and just press Enter **\n')
 take_file_name = input('- Which file? [i=irani.csv or 1=file1.csv or 2=file2.csv]:').strip().lower()
 if take_file_name == 'i':
@@ -39,7 +40,8 @@ else:
     file_name = 'file2'
     print('+ file2.csv is selected')
 try:
-    web_addrs = [] # all urls from csv
+    # this list includes all urls from csv
+    web_addrs = []
     with open(f'./{file_name}.csv') as urls:
         csv_reader = csv.reader(urls)
         for row in csv_reader:
@@ -47,14 +49,19 @@ try:
 except FileNotFoundError:
     patoolib.extract_archive("./csvfiles.zip", outdir=".")
     os.remove('./csvfiles.zip')
-    web_addrs = [] # all urls from csv
+    # this list includes all urls from csv
+    web_addrs = [] 
     with open(f'./{file_name}.csv') as urls:
         csv_reader = csv.reader(urls)
         for row in csv_reader:
             web_addrs.append(row[0])
 len_webaddr = len(web_addrs)
-# take length of csv chunk
-input_urls = [] # list for threads
+""" 
+take length of csv chunk and
+fill input_urls list for threads
+"""
+input_urls = []
+
 try:
     how_many = int(input(f'- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:').strip())
     print(f'+ {how_many} urls are selected.')
@@ -80,6 +87,7 @@ for i in range(0, how_many, length):
 # set iso code
 print('* Guidance: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
 take_iso_name = input('- preferred country? [Germany = DE, Netherland = NL, ...]:').strip().upper()
+
 
 def get_info(web_addrs: list) -> dict:
     api_token = '3bd22fe89c5c42d386d84297d53389d3'
@@ -125,7 +133,7 @@ def get_info(web_addrs: list) -> dict:
                     continue
     return result
 
-def main():
+def main() -> None:
     outlist = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executer:
         tasks = [executer.submit(get_info, url_group) for url_group in input_urls]
