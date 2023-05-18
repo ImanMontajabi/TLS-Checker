@@ -31,10 +31,13 @@ print('\n** You can ignore the questions and just press Enter **\n')
 take_file_name = input('- Which file? [i=irani.csv or 1=file1.csv or 2=file2.csv]:').strip().lower()
 if take_file_name == 'i':
     file_name = 'irani'
+    print('+ irani.csv is selected')
 elif take_file_name == '1':
     file_name = 'file1'
+    print('+ file1.csv is selected')
 else:
     file_name = 'file2'
+    print('+ file2.csv is selected')
 try:
     web_addrs = [] # all urls from csv
     with open(f'./{file_name}.csv') as urls:
@@ -62,10 +65,12 @@ how_many = min(how_many, len_webaddr)
 randomized = input('- Do you want to use randomized search? [y=YES, n=NO]:').strip().lower()
 if randomized == 'y':
     random.shuffle(web_addrs)
+    print('+ Randomized search is selected')
 elif randomized == 'n':
     print('+ Normal search is selected')
 else:
     random.shuffle(web_addrs)
+    print('+ Randomized search is selected')
 # make input of threads
 length = 30 if how_many >= 30 else 1
 for i in range(0, how_many, length):
