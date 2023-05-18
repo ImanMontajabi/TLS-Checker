@@ -28,7 +28,7 @@ python tls-checker.py
 - Guidance: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 - The script will then begin checking the websites and print the results to the console.
 - The script will also create a JSON file named "result.json" in the same directory as the script. This file will contain the results of the website checks.
-- csv sources: [here](https://www.domcop.com/top-10-million-websites) and [here](https://tranco-list.eu/)
+- csv files sources: [here](https://www.domcop.com/top-10-million-websites) and [here](https://tranco-list.eu/)
 
 # License
 TLS Checker is licensed under the MIT License. See LICENSE for [more information](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
