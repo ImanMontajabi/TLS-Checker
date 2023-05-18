@@ -25,8 +25,13 @@ except ImportError:
 
 
 print('\n** You can ignore the questions and just press Enter **\n')
-take_file_name = input('- Which file? [irani or all]:').strip().lower()
-file_name = take_file_name if (take_file_name == 'irani') or (take_file_name == 'all') else 'all'
+take_file_name = input('- Which file? [i=irani.csv or 1=file1.csv or 2=file2.csv]:').strip().lower()
+if take_file_name == 'i':
+    file_name = 'irani'
+elif take_file_name == '1':
+    file_name = 'file1'
+else:
+    file_name = 'file2'
 web_addrs = [] # all urls from csv
 with open(f'./{file_name}.csv') as urls:
     csv_reader = csv.reader(urls)
