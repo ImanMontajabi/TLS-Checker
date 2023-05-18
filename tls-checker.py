@@ -10,9 +10,18 @@ try:
     import requests
     from progress.spinner import PixelSpinner
 except ImportError:
-    print('\n ** Please install required modules: pip install -r requirements.txt **')
-    sys.exit(1)
-
+    print('\n** Please install required modules: pip install -r requirements.txt **')
+    install = input('- Would you like to install requirements automatically? [y=YES, n=NO]:').strip().lower()
+    if install == 'y':
+        import subprocess
+        subprocess.run('pip install -r requirements.txt'.split(' '))
+        import dns.resolver
+        import requests
+        from progress.spinner import PixelSpinner
+    elif install == 'n':
+        sys.exit(0)
+    else:
+        sys.exit(1)
 
 
 print('\n** You can ignore the questions and just press Enter **\n')
