@@ -34,8 +34,8 @@ python tls-checker.py
 
 # Example
 
+![Screenshot (78)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/b89a7586-b790-4b25-bd9d-0d08a8d1673f)
 
-![Screenshot (76)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/962e3064-60e9-4002-a70d-83c577cdab98)
 
 # License
 TLS Checker is licensed under the MIT License. See LICENSE for [more information](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
