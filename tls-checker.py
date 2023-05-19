@@ -9,7 +9,7 @@ import os
 try:
     import dns.resolver
     import requests
-    from progress.spinner import PixelSpinner
+    from progress.spinner import MoonSpinner
     import patoolib
 except ImportError:
     print('\n** Please install required modules: pip install -r requirements.txt **')
@@ -19,7 +19,7 @@ except ImportError:
         subprocess.run('pip3 install -r requirements.txt'.split(' '))
         import dns.resolver
         import requests
-        from progress.spinner import PixelSpinner
+        from progress.spinner import MoonSpinner
         import patoolib
     elif install == 'n':
         sys.exit(0)
@@ -95,7 +95,7 @@ def get_info(web_addrs: list) -> dict:
     context = ssl.create_default_context()
     context.set_alpn_protocols(['h2', 'http/1.1', 'h3'])
     result = {}
-    spinner = PixelSpinner('------------------------------- Searching ')
+    spinner = MoonSpinner('••••••••••••••••••••••••••••••••••••• ')
     for web_addr in web_addrs:
         spinner.next()
         try:
