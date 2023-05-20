@@ -32,10 +32,10 @@ python tls-checker.py
 - The script will also create a JSON file named "result.json" in the same directory as the script. This file will contain the results of the website checks.
 - CSV files sources: [here](https://www.domcop.com/top-10-million-websites) and [here](https://tranco-list.eu/)
 
-# Example
+# Screenshot
 
+![Screenshot (78)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/b89a7586-b790-4b25-bd9d-0d08a8d1673f)
 
-![Screenshot (76)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/962e3064-60e9-4002-a70d-83c577cdab98)
 
 # License
 TLS Checker is licensed under the MIT License. See LICENSE for [more information](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
