@@ -32,13 +32,13 @@ print('\n** You can ignore the questions and just press Enter **\n')
 get_file_name = input('- Which file? [i=irani.csv or 1=file1.csv or 2=file2.csv]:').strip().lower()
 if get_file_name == 'i':
     file_name = 'irani'
-    print('+ irani.csv is selected')
+    print('+ irani.csv is selected.')
 elif get_file_name == '1':
     file_name = 'file1'
-    print('+ file1.csv is selected')
+    print('+ file1.csv is selected.')
 else:
     file_name = 'file2'
-    print('+ file2.csv is selected')
+    print('+ file2.csv is selected.')
 try:
     # this list includes all urls from csv
     web_addrs = []
@@ -86,7 +86,7 @@ for i in range(0, how_many, length):
     input_urls.append(web_addrs[i:min(i+length, how_many)])
 # set iso code
 print('* Guidance: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
-get_iso_name = input('- preferred country? [Germany = DE, Netherland = NL, ...]:').strip().upper()
+get_iso_name = input('- preferred country? [DE=Germany, NL=Netherland, ...]:').strip().upper()
 
 
 def get_info(web_addrs: list) -> dict:
