@@ -133,15 +133,20 @@ def get_info(web_addrs: list) -> dict:
                     continue
     return result
 
-def main() -> None:
+def main() -> list:
     outlist = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executer:
         tasks = [executer.submit(get_info, url_group) for url_group in input_urls]
         for task in concurrent.futures.as_completed(tasks):
             result = task.result()
             outlist.append(result)
+    return outlist
+
+def save_output(lst):
     with open('./result.json', 'w', encoding='utf-8') as f:
-        json.dump(outlist, f, ensure_ascii=False, indent=4)
+        json.dump(lst, f, ensure_ascii=False, indent=4)
 
 if __name__ == '__main__':
-    main()
+    outlist = main()
+    save_output(outlist)
+    
