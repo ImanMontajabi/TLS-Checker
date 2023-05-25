@@ -139,7 +139,8 @@ def main() -> list:
         tasks = [executer.submit(get_info, url_group) for url_group in input_urls]
         for task in concurrent.futures.as_completed(tasks):
             result = task.result()
-            outlist.append(result)
+            if result:
+                outlist.append(result)
     return outlist
 
 def save_output(lst):
@@ -149,4 +150,6 @@ def save_output(lst):
 if __name__ == '__main__':
     outlist = main()
     save_output(outlist)
+    
+
     
