@@ -6,6 +6,7 @@ import json
 import concurrent.futures
 import random
 import os
+import re
 try:
     import dns.resolver
     import requests
@@ -87,6 +88,10 @@ for i in range(0, how_many, length):
 # set iso code
 print('* Guidance: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
 get_iso_name = input('- preferred country? [DE=Germany, NL=Netherland, ...]:').strip().upper()
+# set AS organization name and regex for filter AS organization names during search
+get_AS_organization_name = input('- preferred AS Organization? [Hetzner, Vultr, OVH, Akamai,...]:').strip().lower()
+pattern = re.compile(r'[^.,\s]*'+get_AS_organization_name+'[^.,\s]*[.,]?', re.IGNORECASE)
+
 
 
 def get_info(web_addrs: list) -> dict:
@@ -105,32 +110,30 @@ def get_info(web_addrs: list) -> dict:
             ip_server = [rdata for rdata in resolve_server]
             url = f'https://api.findip.net/{ip_server[0]}/?token={api_token}'
             response = requests.get(url, timeout=5).json()
-        except:
-            continue
-        else:
             cipher = conn.cipher()
             alpn = conn.selected_alpn_protocol()
             iso_code = response['country']['iso_code']
-            if get_iso_name != '':
-                if (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3')) and (get_iso_name == iso_code):
-                    country = response['country']['names']['en']
-                    city = response['city']['names']['en']
-                    isp = response['traits']['isp']
-                    issuer = conn.getpeercert()['issuer'][1][0][1]
-                    print(f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}\nkey_length = {cipher[2]}\ncountry = {country}\niso_code = {iso_code}\ncity = {city}\nisp = {isp}\n', end='')
-                    result[web_addr] = [issuer, alpn, cipher[0], cipher[1], cipher[2], country, iso_code, city, isp]
-                else:
-                    continue
+            AS_organization = response['traits']['autonomous_system_organization']
+            country = response['country']['names']['en']
+            city = response['city']['names']['en']
+            issuer = conn.getpeercert()['issuer'][1][0][1]
+        except:
+            continue
+        else:
+            if get_iso_name and get_AS_organization_name:
+                condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3')) and (get_iso_name == iso_code) and (pattern.findall(AS_organization))
+            elif get_iso_name:
+                condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3')) and (get_iso_name == iso_code)
+            elif get_AS_organization_name:
+                condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3')) and (pattern.findall(AS_organization))
             else:
-                if (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3')):
-                    country = response['country']['names']['en']
-                    city = response['city']['names']['en']
-                    isp = response['traits']['isp']
-                    issuer = conn.getpeercert()['issuer'][1][0][1]
-                    print(f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}\nkey_length = {cipher[2]}\ncountry = {country}\niso_code = {iso_code}\ncity = {city}\nisp = {isp}\n', end='')
-                    result[web_addr] = [issuer, alpn, cipher[0], cipher[1], cipher[2], country, iso_code, city, isp]
-                else:
-                    continue
+                condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3'))
+            if condition:
+                print(f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}\nkey_length = {cipher[2]}\ncountry = {country}\niso_code = {iso_code}\ncity = {city}\nAS organization = {AS_organization}\n', end='')
+                result[web_addr] = [issuer, alpn, cipher[0], cipher[1], cipher[2], country, iso_code, city, AS_organization]
+            else:
+                continue
+
     return result
 
 def main() -> list:
