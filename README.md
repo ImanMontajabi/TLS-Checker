@@ -39,7 +39,7 @@ python tls-checker.py
 
 # video
 
-
+- The following tutorial video can be a good guide for using this script:
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/QNbeYkGIiA4/0.jpg)](https://youtu.be/QNbeYkGIiA4)
 
