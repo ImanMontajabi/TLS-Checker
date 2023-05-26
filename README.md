@@ -37,6 +37,14 @@ python tls-checker.py
 
 ![Screenshot (87)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/e9d13534-4218-498f-bbbb-bd6e0bfb74ff)
 
+# video
+
+
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+
 
 # License
 TLS Checker is licensed under the MIT License. See [LICENSE](https://github.com/ImanMontajabi/TLS-Checker/blob/master/LICENSE) for [more information](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
+
+
