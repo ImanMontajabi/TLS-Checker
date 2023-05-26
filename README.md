@@ -1,7 +1,7 @@
 # TLS Checker 🚬
 TLS Checker is a Python script for checking the Transport Layer Security (TLS) version and security settings of a list of websites. The script uses multithreading to speed up the process of checking a large number of websites.
 
-[نمونه خروجی قابل استفاده](https://github.com/ImanMontajabi/TLS-Checker/blob/master/result.json)
+[نمونه خروجی آماده استفاده](https://github.com/ImanMontajabi/TLS-Checker/blob/master/result.json)
 
 حجم فایل‌ها تقریبا 33mb است.
 
@@ -37,6 +37,14 @@ python tls-checker.py
 
 ![Screenshot (87)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/e9d13534-4218-498f-bbbb-bd6e0bfb74ff)
 
+# video
+
+- The following tutorial video can be a good guide for using this script:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/QNbeYkGIiA4/0.jpg)](https://youtu.be/QNbeYkGIiA4)
+
 
 # License
 TLS Checker is licensed under the MIT License. See [LICENSE](https://github.com/ImanMontajabi/TLS-Checker/blob/master/LICENSE) for [more information](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
+
+
