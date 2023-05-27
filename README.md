@@ -35,8 +35,7 @@ python tls-checker.py
 
 # Screenshot
 
-![Screenshot (90)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/ec915ae0-f29c-406c-bc2d-217d07e5d47f)
-
+![Screenshot (92)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/fd776019-d08c-4509-a5e8-5ee8d3abe202)
 
 # video
 
