@@ -29,6 +29,7 @@ except ImportError:
 
 
 
+base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
 print('\n** You can ignore the questions and just press Enter **\n')
 get_file_name = input('- Which file? [i=irani.csv or 1=file1.csv or 2=file2.csv]:').strip().lower()
 if get_file_name == 'i':
@@ -43,16 +44,19 @@ else:
 try:
     # this list includes all urls from csv
     web_addrs = []
-    with open(f'./{file_name}.csv') as urls:
+    addr_file = os.path.join(base_path, f'./{file_name}.csv')
+    with open(addr_file) as urls:
         csv_reader = csv.reader(urls)
         for row in csv_reader:
             web_addrs.append(row[0])
 except FileNotFoundError:
-    patoolib.extract_archive("./csvfiles.zip", outdir=".")
-    os.remove('./csvfiles.zip')
+    addr_zip = os.path.join(base_path, './csvfiles.zip')
+    patoolib.extract_archive(addr_zip, outdir=".")
+    os.remove(addr_zip)
     # this list includes all urls from csv
     web_addrs = [] 
-    with open(f'./{file_name}.csv') as urls:
+    addr_file = os.path.join(base_path, f'./{file_name}.csv')
+    with open(addr_file) as urls:
         csv_reader = csv.reader(urls)
         for row in csv_reader:
             web_addrs.append(row[0])
@@ -147,7 +151,8 @@ def main() -> list:
     return outlist
 
 def save_output(lst):
-    with open('./result.json', 'w', encoding='utf-8') as f:
+    addr_file = os.path.join(base_path, './result.json')
+    with open(addr_file, 'w', encoding='utf-8') as f:
         json.dump(lst, f, ensure_ascii=False, indent=4)
 
 
