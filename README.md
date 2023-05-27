@@ -1,7 +1,7 @@
 # TLS Checker 🚬
 TLS Checker is a Python script for checking the Transport Layer Security (TLS) version and security settings of a list of websites. The script uses multithreading to speed up the process of checking a large number of websites.
 
-:paperclip:  [نمونه خروجی آماده استفاده](https://github.com/ImanMontajabi/TLS-Checker/blob/master/result.json)
+:paperclip:  [نمونه خروجی آماده‌ی استفاده](https://github.com/ImanMontajabi/TLS-Checker/blob/master/result.json)
 
 :package:  حجم فایل‌ها تقریبا 33mb است.
 
@@ -28,7 +28,7 @@ python tls-checker.py
 - The script will then prompt you for the number of websites you want to check. This number should be between 1 and the total number of websites in the CSV file.
 - The script will then prompt you for the iso-code of server location (Iran = IR, Germany = DE,....)
 - You can leave this field blank and just press "Enter"
-- Guidance: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
+- Guide: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 - The script will then begin checking the websites and print the results to the console.
 - The script will also create a JSON file named "result.json" in the same directory as the script. This file will contain the results of the website checks.
 - CSV files sources: [here](https://www.domcop.com/top-10-million-websites) and [here](https://tranco-list.eu/)
