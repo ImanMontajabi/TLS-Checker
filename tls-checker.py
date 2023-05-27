@@ -51,7 +51,8 @@ try:
             web_addrs.append(row[0])
 except FileNotFoundError:
     addr_zip = os.path.join(base_path, './csvfiles.zip')
-    patoolib.extract_archive(addr_zip, outdir=".")
+    addr_zip_out = os.path.join(base_path, '.')
+    patoolib.extract_archive(addr_zip, addr_zip_out)
     os.remove(addr_zip)
     # this list includes all urls from csv
     web_addrs = [] 
