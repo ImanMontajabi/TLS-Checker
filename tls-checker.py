@@ -44,12 +44,24 @@ else:
 try:
     # this list includes all urls from csv
     web_addrs = []
+<<<<<<< HEAD
+    addr_file = os.path.join(base_path, f'{file_name}.csv')
+=======
     addr_file = os.path.join(base_path, f'./{file_name}.csv')
+>>>>>>> 33fd47b737dbf8223aa319026098332ff8593725
     with open(addr_file) as urls:
         csv_reader = csv.reader(urls)
         for row in csv_reader:
             web_addrs.append(row[0])
 except FileNotFoundError:
+<<<<<<< HEAD
+    zip_file = os.path.join(base_path, 'csvfiles.zip')
+    zip_file_out = os.path.join(base_path, '')
+    patoolib.extract_archive(zip_file, outdir=zip_file_out)
+    os.remove(zip_file)
+    # this list includes all urls from csv
+    web_addrs = [] 
+=======
     addr_zip = os.path.join(base_path, './csvfiles.zip')
     addr_zip_out = os.path.join(base_path, '.')
     patoolib.extract_archive(addr_zip, addr_zip_out)
@@ -57,6 +69,7 @@ except FileNotFoundError:
     # this list includes all urls from csv
     web_addrs = [] 
     addr_file = os.path.join(base_path, f'./{file_name}.csv')
+>>>>>>> 33fd47b737dbf8223aa319026098332ff8593725
     with open(addr_file) as urls:
         csv_reader = csv.reader(urls)
         for row in csv_reader:
@@ -152,8 +165,13 @@ def main() -> list:
     return outlist
 
 def save_output(lst):
+<<<<<<< HEAD
+    result_file = os.path.join(base_path, 'result.json')
+    with open(result_file, 'w', encoding='utf-8') as f:
+=======
     addr_file = os.path.join(base_path, './result.json')
     with open(addr_file, 'w', encoding='utf-8') as f:
+>>>>>>> 33fd47b737dbf8223aa319026098332ff8593725
         json.dump(lst, f, ensure_ascii=False, indent=4)
 
 
