@@ -133,7 +133,12 @@ def get_info(web_addrs: list) -> dict:
             else:
                 condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3'))
             if condition:
-                print(f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}\nkey_length = {cipher[2]}\ncountry = {country}\niso_code = {iso_code}\ncity = {city}\nAS organization = {AS_organization}\n', end='')
+                print(
+                      f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}'
+                      f'\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}'
+                      f'\nkey_length = {cipher[2]}\ncountry = {country}'
+                      f'\niso_code = {iso_code}\ncity = {city}\nAS organization = {AS_organization}\n', end=''
+                      )
                 result[web_addr] = [issuer, alpn, cipher[0], cipher[1], cipher[2], country, iso_code, city, AS_organization]
             else:
                 continue
