@@ -27,11 +27,11 @@ https://www.python.org/downloads/
 - Open a terminal and navigate to the directory containing the script.<br>
 - Run the script with the following command:
 
-first:
+☝️ first:
 ```
 pip install -r requirements.txt
 ```
-then:
+:v: then:
 ```
 python tls-checker.py
 ```
