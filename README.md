@@ -25,7 +25,9 @@ https://www.python.org/downloads/
 # Usage
 - Download or clone the repository to your local machine.<br>
 - Open a terminal and navigate to the directory containing the script.<br>
+- ترجیحا موقع اجرا فیلترشکن یا vpn خاموش باشد.<br>
 - Run the script with the following command:
+
 
 ☝️ first:
 ```
