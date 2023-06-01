@@ -11,7 +11,7 @@ TLS Checker is a Python script for checking the Transport Layer Security (TLS) v
 🍎 [رفع مشکل pip](https://camelcase.ir/pip-in-cmd/)
 
 
-[رفع مشکل python](https://sabzdanesh.com/set-python-path/)
+🐍 [رفع مشکل python](https://sabzdanesh.com/set-python-path/)
 
 
 # Installation
