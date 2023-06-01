@@ -37,7 +37,8 @@ pip install -r requirements.txt
 python tls-checker.py
 ```
 
-ترجیحا موقع اجرا فیلترشکن یا vpn خاموش باشد :moyai:
+
+ :moyai: .ترجیحا موقع اجرا فیلترشکن خاموش باشد
 
 - The script will prompt you for the name of the CSV file containing the list of websites you want to check. The CSV file should contain one website per row, with no headers.
 - The script will then prompt you for the number of websites you want to check. This number should be between 1 and the total number of websites in the CSV file.
