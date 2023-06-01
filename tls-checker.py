@@ -30,6 +30,7 @@ except ImportError:
 
 
 base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+
 print('\n** You can ignore the questions and just press Enter **\n')
 get_file_name = input('- Which file? [i=irani.csv or 1=file1.csv or 2=file2.csv]:').strip().lower()
 if get_file_name == 'i':
@@ -60,13 +61,14 @@ except FileNotFoundError:
         csv_reader = csv.reader(urls)
         for row in csv_reader:
             web_addrs.append(row[0])
+
 len_webaddr = len(web_addrs)
+
 """ 
 Get length of csv chunk and
 fill input_urls list for threads
 """
 input_urls = []
-
 try:
     how_many = int(input(f'- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:').strip())
     print(f'+ {how_many} urls are selected.')
@@ -85,13 +87,16 @@ elif randomized == 'n':
 else:
     random.shuffle(web_addrs)
     print('+ Randomized search is selected.')
+
 # make input of threads
 length = 30 if how_many >= 30 else 1
 for i in range(0, how_many, length):
     input_urls.append(web_addrs[i:min(i+length, how_many)])
+
 # set iso code
 print('* Guide: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
 get_iso_name = input('- preferred country? [DE=Germany, NL=Netherland,...]:').strip().upper()
+
 # set AS organization name and regex for filter AS organization names during search
 get_AS_organization_name = input('- preferred AS Organization? [Hetzner, Vultr, OVH, Akamai,...]:').strip().lower()
 pattern = re.compile(r'[^.,\s]*'+get_AS_organization_name+'[^.,\s]*[.,]?', re.IGNORECASE)
@@ -155,11 +160,10 @@ def main() -> list:
                 outlist.append(result)
     return outlist
 
-def save_output(lst):
+def save_output(lst: list) -> None:
     result_file = os.path.join(base_path, 'result.json')
     with open(result_file, 'w', encoding='utf-8') as f:
         json.dump(lst, f, ensure_ascii=False, indent=4)
-
 
 
 if __name__ == '__main__':
