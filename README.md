@@ -1,17 +1,17 @@
 # TLS Checker 🚬
 TLS Checker is a Python script for checking the Transport Layer Security (TLS) version and security settings of a list of websites. The script uses multithreading to speed up the process of checking a large number of websites.
 
+
 :paperclip:  [نمونه خروجی آماده‌ی استفاده](https://github.com/ImanMontajabi/TLS-Checker/blob/master/result.json)
+
 
 :package:  حجم فایل‌ها تقریبا 33mb است.
 
-- رفع مشکل pip:
 
-https://camelcase.ir/pip-in-cmd/
+🍎 [رفع مشکل pip](https://camelcase.ir/pip-in-cmd/)
 
-- رفع مشکل python: 
 
-https://sabzdanesh.com/set-python-path/
+[رفع مشکل python](https://sabzdanesh.com/set-python-path/)
 
 
 # Installation
