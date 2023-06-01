@@ -19,7 +19,7 @@ To use TLS Checker, you will need Python 3.7 or later. You can download Python f
 
 https://www.python.org/downloads/
 
-- هنگام نصب پایتون گزینه‌ی **set python ... to PATH** فعال باشد.
+☑️ هنگام نصب پایتون گزینه‌ی **set python ... to PATH** فعال باشد.
 
 
 # Usage
