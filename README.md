@@ -1,28 +1,47 @@
-# TLS Checker 🚬
+# TLS Checker 🌐
+
 TLS Checker is a Python script for checking the Transport Layer Security (TLS) version and security settings of a list of websites. The script uses multithreading to speed up the process of checking a large number of websites.
+
 
 :paperclip:  [نمونه خروجی آماده‌ی استفاده](https://github.com/ImanMontajabi/TLS-Checker/blob/master/result.json)
 
-:package:  حجم فایل‌ها تقریبا 33mb است.
 
+:package:  حجم فایل‌ها تقریبا 33mb است.:warning:
+
+
+📌 [رفع مشکل pip](https://camelcase.ir/pip-in-cmd/)
+
+
+🐍 [رفع مشکل python](https://sabzdanesh.com/set-python-path/)
+
+🚧 در ویندوز ترجیحا از [این نسخه‌ی پاورشل](https://github.com/PowerShell/PowerShell) به همراه [این برنامه‌ی ترمینال](https://github.com/microsoft/terminal) استفاده کنید 🙂
 
 
 # Installation
-To use TLS Checker, you will need Python 3.7 or later. You can download Python from the official website: https://www.python.org/downloads/
+To use TLS Checker, you will need Python 3.7 or later. You can download Python from the official website: 
+
+https://www.python.org/downloads/
+
+☑️ هنگام نصب پایتون گزینه‌ی **set python ... to PATH** فعال باشد.
+
 
 # Usage
 - Download or clone the repository to your local machine.<br>
 - Open a terminal and navigate to the directory containing the script.<br>
 - Run the script with the following command:
 
-first:
+
+☝️ first:
 ```
 pip install -r requirements.txt
 ```
-then:
+:v: then:
 ```
 python tls-checker.py
 ```
+
+
+ :moyai: ترجیحا موقع اجرا فیلترشکن خاموش باشد.
 
 - The script will prompt you for the name of the CSV file containing the list of websites you want to check. The CSV file should contain one website per row, with no headers.
 - The script will then prompt you for the number of websites you want to check. This number should be between 1 and the total number of websites in the CSV file.
