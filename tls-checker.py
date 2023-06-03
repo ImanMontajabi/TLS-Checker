@@ -28,7 +28,6 @@ except ImportError:
         sys.exit(1)
 
 
-
 base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
 
 print('\n** You can ignore the questions and just press Enter **\n')
@@ -42,10 +41,11 @@ elif get_file_name == '1':
 else:
     file_name = 'file2'
     print('+ file2.csv is selected.')
+
+# this list includes all urls from csv
+web_addrs = []
+addr_file = os.path.join(base_path, f'{file_name}.csv')
 try:
-    # this list includes all urls from csv
-    web_addrs = []
-    addr_file = os.path.join(base_path, f'{file_name}.csv')
     with open(addr_file) as urls:
         csv_reader = csv.reader(urls)
         for row in csv_reader:
@@ -55,8 +55,7 @@ except FileNotFoundError:
     zip_file_out = os.path.join(base_path, '')
     patoolib.extract_archive(zip_file, outdir=zip_file_out)
     os.remove(zip_file)
-    # this list includes all urls from csv
-    web_addrs = [] 
+
     with open(addr_file) as urls:
         csv_reader = csv.reader(urls)
         for row in csv_reader:
@@ -68,6 +67,7 @@ len_webaddr = len(web_addrs)
 Get length of csv chunk and
 fill input_urls list for threads
 """
+
 input_urls = []
 try:
     how_many = int(input(f'- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:').strip())
@@ -78,6 +78,7 @@ except ValueError:
 
 how_many = max(how_many, 1)
 how_many = min(how_many, len_webaddr)
+
 randomized = input('- Do you want to use randomized search? [y=YES, n=NO]:').strip().lower()
 if randomized == 'y':
     random.shuffle(web_addrs)
@@ -100,7 +101,6 @@ get_iso_name = input('- preferred country? [DE=Germany, NL=Netherland,...]:').st
 # set AS organization name and regex for filter AS organization names during search
 get_AS_organization_name = input('- preferred AS Organization? [Hetzner, Vultr, OVH, Akamai,...]:').strip().lower()
 pattern = re.compile(r'[^.,\s]*'+get_AS_organization_name+'[^.,\s]*[.,]?', re.IGNORECASE)
-
 
 
 def get_info(web_addrs: list) -> dict:
@@ -142,7 +142,8 @@ def get_info(web_addrs: list) -> dict:
                       f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}'
                       f'\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}'
                       f'\nkey_length = {cipher[2]}\ncountry = {country}'
-                      f'\niso_code = {iso_code}\ncity = {city}\nAS organization = {AS_organization}\n', end=''
+                      f'\niso_code = {iso_code}\ncity = {city}'
+                      f'\nAS organization = {AS_organization}\n', end=''
                      )
                 result[web_addr] = [
                                     issuer, alpn, cipher[0], cipher[1], 
@@ -150,8 +151,8 @@ def get_info(web_addrs: list) -> dict:
                                    ]
             else:
                 continue
-
     return result
+
 
 def main() -> list:
     outlist = []
