@@ -143,8 +143,11 @@ def get_info(web_addrs: list) -> dict:
                       f'\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}'
                       f'\nkey_length = {cipher[2]}\ncountry = {country}'
                       f'\niso_code = {iso_code}\ncity = {city}\nAS organization = {AS_organization}\n', end=''
-                      )
-                result[web_addr] = [issuer, alpn, cipher[0], cipher[1], cipher[2], country, iso_code, city, AS_organization]
+                     )
+                result[web_addr] = [
+                                    issuer, alpn, cipher[0], cipher[1], 
+                                    cipher[2], country, iso_code, city, AS_organization
+                                   ]
             else:
                 continue
 
