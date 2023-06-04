@@ -126,6 +126,9 @@ def get_info(web_addrs: list) -> dict:
             country = response['country']['names']['en']
             city = response['city']['names']['en']
             issuer = conn.getpeercert()['issuer'][1][0][1]
+            subject_alt_name = [dns[1] for dns in conn.getpeercert()['subjectAltName']]
+            random.shuffle(subject_alt_name)
+            subject_alt_name_chunk = subject_alt_name[0: 6] if len(subject_alt_name) > 6 else subject_alt_name
         except:
             continue
         else:
@@ -143,11 +146,14 @@ def get_info(web_addrs: list) -> dict:
                       f'\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}'
                       f'\nkey_length = {cipher[2]}\ncountry = {country}'
                       f'\niso_code = {iso_code}\ncity = {city}'
-                      f'\nAS organization = {AS_organization}\n', end=''
+                      f'\nAS organization = {AS_organization}',
+                      f'\nsubject_alt_name = {" | ".join(map(str, subject_alt_name_chunk))}\n',
+                      end=''
                      )
                 result[web_addr] = [
                                     issuer, alpn, cipher[0], cipher[1], 
-                                    cipher[2], country, iso_code, city, AS_organization
+                                    cipher[2], country, iso_code, city,
+                                    AS_organization, subject_alt_name
                                    ]
             else:
                 continue
