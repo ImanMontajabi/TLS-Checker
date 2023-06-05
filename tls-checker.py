@@ -146,7 +146,7 @@ def get_info(web_addrs: list) -> dict:
                       f'\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}'
                       f'\nkey_length = {cipher[2]}\ncountry = {country}'
                       f'\niso_code = {iso_code}\ncity = {city}'
-                      f'\nAS organization = {AS_organization}',
+                      f'\nAS organization = {AS_organization}'
                       f'\nsubject_alt_name = {" | ".join(map(str, subject_alt_name_chunk))}\n',
                       end=''
                      )
