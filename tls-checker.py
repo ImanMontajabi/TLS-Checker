@@ -28,81 +28,6 @@ except ImportError:
         sys.exit(1)
 
 
-base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-
-print('\n** You can ignore the questions and just press Enter **\n')
-get_file_name = input('- Which file? [i=irani.csv or 1=file1.csv or 2=file2.csv]:').strip().lower()
-if get_file_name == 'i':
-    file_name = 'irani'
-    print('+ irani.csv is selected.')
-elif get_file_name == '1':
-    file_name = 'file1'
-    print('+ file1.csv is selected.')
-else:
-    file_name = 'file2'
-    print('+ file2.csv is selected.')
-
-# this list includes all urls from csv
-web_addrs = []
-addr_file = os.path.join(base_path, f'{file_name}.csv')
-try:
-    with open(addr_file) as urls:
-        csv_reader = csv.reader(urls)
-        for row in csv_reader:
-            web_addrs.append(row[0])
-except FileNotFoundError:
-    zip_file = os.path.join(base_path, 'csvfiles.zip')
-    zip_file_out = os.path.join(base_path, '')
-    patoolib.extract_archive(zip_file, outdir=zip_file_out)
-    os.remove(zip_file)
-
-    with open(addr_file) as urls:
-        csv_reader = csv.reader(urls)
-        for row in csv_reader:
-            web_addrs.append(row[0])
-
-len_webaddr = len(web_addrs)
-
-""" 
-Get length of csv chunk and
-fill input_urls list for threads
-"""
-
-input_urls = []
-try:
-    how_many = int(input(f'- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:').strip())
-    print(f'+ {how_many} urls are selected.')
-except ValueError:
-    how_many = len_webaddr
-    print(f'+ {how_many} urls are selected.')
-
-how_many = max(how_many, 1)
-how_many = min(how_many, len_webaddr)
-
-randomized = input('- Do you want to use randomized search? [y=YES, n=NO]:').strip().lower()
-if randomized == 'y':
-    random.shuffle(web_addrs)
-    print('+ Randomized search is selected.')
-elif randomized == 'n':
-    print('+ Normal search is selected.')
-else:
-    random.shuffle(web_addrs)
-    print('+ Randomized search is selected.')
-
-# make input of threads
-length = 30 if how_many >= 30 else 1
-for i in range(0, how_many, length):
-    input_urls.append(web_addrs[i:min(i+length, how_many)])
-
-# set iso code
-print('* Guide: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
-get_iso_name = input('- preferred country? [DE=Germany, NL=Netherland,...]:').strip().upper()
-
-# set AS organization name and regex for filter AS organization names during search
-get_AS_organization_name = input('- preferred AS Organization? [Hetzner, Vultr, OVH, Akamai,...]:').strip().lower()
-pattern = re.compile(r'[^.,\s]*'+get_AS_organization_name+'[^.,\s]*[.,]?', re.IGNORECASE)
-
-
 def get_info(web_addrs: list) -> dict:
     api_token = '3bd22fe89c5c42d386d84297d53389d3'
     port = 443
@@ -177,6 +102,81 @@ def save_output(lst: list) -> None:
 
 
 if __name__ == '__main__':
+    # base path of files for read and save them
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    # initialize the search process
+    print('\n** You can ignore the questions and just press Enter **\n')
+    get_file_name = input('- Which file? [i=irani.csv or 1=file1.csv or 2=file2.csv]:').strip().lower()
+    if get_file_name == 'i':
+        file_name = 'irani'
+        print('+ irani.csv is selected.')
+    elif get_file_name == '1':
+        file_name = 'file1'
+        print('+ file1.csv is selected.')
+    else:
+        file_name = 'file2'
+        print('+ file2.csv is selected.')
+
+    # this list includes all urls from csv
+    web_addrs = []
+    addr_file = os.path.join(base_path, f'{file_name}.csv')
+    try:
+        with open(addr_file) as urls:
+            csv_reader = csv.reader(urls)
+            for row in csv_reader:
+                web_addrs.append(row[0])
+    except FileNotFoundError:
+        zip_file = os.path.join(base_path, 'csvfiles.zip')
+        zip_file_out = os.path.join(base_path, '')
+        patoolib.extract_archive(zip_file, outdir=zip_file_out)
+        os.remove(zip_file)
+
+        with open(addr_file) as urls:
+            csv_reader = csv.reader(urls)
+            for row in csv_reader:
+                web_addrs.append(row[0])
+
+    len_webaddr = len(web_addrs)
+
+    """ 
+    Get length of csv chunk and
+    fill input_urls list for threads
+    """
+
+    input_urls = []
+    try:
+        how_many = int(input(f'- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:').strip())
+        print(f'+ {how_many} urls are selected.')
+    except ValueError:
+        how_many = len_webaddr
+        print(f'+ {how_many} urls are selected.')
+
+    how_many = max(how_many, 1)
+    how_many = min(how_many, len_webaddr)
+
+    randomized = input('- Do you want to use randomized search? [y=YES, n=NO]:').strip().lower()
+    if randomized == 'y':
+        random.shuffle(web_addrs)
+        print('+ Randomized search is selected.')
+    elif randomized == 'n':
+        print('+ Normal search is selected.')
+    else:
+        random.shuffle(web_addrs)
+        print('+ Randomized search is selected.')
+
+    # make input of threads
+    length = 30 if how_many >= 30 else 1
+    for i in range(0, how_many, length):
+        input_urls.append(web_addrs[i:min(i+length, how_many)])
+
+    # set iso code
+    print('* Guide: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
+    get_iso_name = input('- preferred country? [DE=Germany, NL=Netherland,...]:').strip().upper()
+
+    # set AS organization name and regex for filter AS organization names during search
+    get_AS_organization_name = input('- preferred AS Organization? [Hetzner, Vultr, OVH, Akamai,...]:').strip().lower()
+    pattern = re.compile(r'[^.,\s]*'+get_AS_organization_name+'[^.,\s]*[.,]?', re.IGNORECASE)
+    
     outlist = main()
     save_output(outlist)
     
