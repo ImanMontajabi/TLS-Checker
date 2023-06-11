@@ -76,7 +76,7 @@ ln -s /etc/ssl/* /Library/Frameworks/Python.framework/Versions/Current/etc/opens
  
 # Screenshot
 
-![Screenshot (97)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/23f17cea-7917-4123-9c1b-a5729aab30d3)
+![Screenshot (99)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/04bb5e03-24f3-4917-af56-dbbfa4bb2524)
 
 
 # video
