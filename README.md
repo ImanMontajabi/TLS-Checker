@@ -39,7 +39,9 @@ https://www.python.org/downloads/
 - Download or clone the repository to your local machine.<br>
 - Open a terminal and navigate to the directory containing the script.<br>
 - Run the script with the following command:
-برای اجرا در محل فایل های برنامه از دستور زیر استفاده کنید:
+
+
+برای اجرا، در محل فایل های برنامه از دستور زیر استفاده کنید:
 
 
 ```
