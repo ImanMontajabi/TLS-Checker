@@ -41,6 +41,9 @@ https://www.python.org/downloads/
 - Run the script with the following command:
 
 
+برای اجرا، در محل فایل های برنامه از دستور زیر استفاده کنید:
+
+
 ```
 python tls-checker.py
 ```
