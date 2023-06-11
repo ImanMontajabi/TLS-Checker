@@ -15,7 +15,17 @@ TLS Checker is a Python script for checking the Transport Layer Security (TLS) v
 🐍 [رفع مشکل python](https://sabzdanesh.com/set-python-path/)
 
 🚧 در ویندوز ترجیحا از [این نسخه‌ی پاورشل](https://github.com/PowerShell/PowerShell) به همراه [این برنامه‌ی ترمینال](https://github.com/microsoft/terminal) استفاده کنید 🙂
+<details dir="rtl">
+ <summary>
+  ❌ رفع مشکل کار نکردن برنامه در MacOS
+ </summary>
+ <br>
+  در حالت عادی برنامه هیچ دامنه ای رو اسکن نمیکنه و بعد از چند ثانیه اسکن بدون هیچ نتیجه ای تموم میشه که دلیلش لود نشدن لایبرری های ssl هست. برای حل این مشکل کافیه دستور زیر رو داخل ترمینال وارد کنید و دوباره اسکریپت رو اجرا کنید :
 
+```bash
+ln -s /etc/ssl/* /Library/Frameworks/Python.framework/Versions/Current/etc/openssl
+```
+ </details>
 
 # Installation
 To use TLS Checker, you will need Python 3.7 or later. You can download Python from the official website: 
@@ -52,6 +62,18 @@ python tls-checker.py
 - The script will also create a JSON file named "result.json" in the same directory as the script. This file will contain the results of the website checks.
 - CSV files sources: [here](https://www.domcop.com/top-10-million-websites) and [here](https://tranco-list.eu/)
 
+<details>
+ <summary>
+  ❌ Fix script's issues on MacOS
+ </summary>
+ <br>
+ If you ran into problems using the script, the reason is that MacOS's ssl libraries aren't defined for python, just paste the command below into your terminal and run the script again.
+ 
+```bash
+ln -s /etc/ssl/* /Library/Frameworks/Python.framework/Versions/Current/etc/openssl
+```
+ </details>
+ 
 # Screenshot
 
 ![Screenshot (97)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/23f17cea-7917-4123-9c1b-a5729aab30d3)
@@ -66,5 +88,3 @@ python tls-checker.py
 
 # License
 TLS Checker is licensed under the MIT License. See [LICENSE](https://github.com/ImanMontajabi/TLS-Checker/blob/master/LICENSE) for [more information](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
-
-
