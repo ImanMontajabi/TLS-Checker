@@ -23,7 +23,7 @@ except ImportError:
     if install == 'y':
         import subprocess
         try:
-            subprocess.run('fs install -r requirements.txt'.split(' '))
+            subprocess.run('pip install -r requirements.txt'.split(' '))
         except  FileNotFoundError:
             subprocess.run('pip3 install -r requirements.txt'.split(' '))
         import dns.resolver
