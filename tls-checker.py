@@ -24,7 +24,7 @@ except ImportError:
         import subprocess
         try:
             subprocess.run('pip install -r requirements.txt'.split(' '))
-        except  FileNotFoundError:
+        except FileNotFoundError:
             subprocess.run('pip3 install -r requirements.txt'.split(' '))
         import dns.resolver
         import requests
