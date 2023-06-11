@@ -53,7 +53,7 @@ def get_info(web_addrs: list) -> dict:
             issuer = conn.getpeercert()['issuer'][1][0][1]
             subject_alt_name = [dns[1] for dns in conn.getpeercert()['subjectAltName']]
             random.shuffle(subject_alt_name)
-            subject_alt_name_chunk = subject_alt_name[0: 6] if len(subject_alt_name) > 6 else subject_alt_name
+            subject_alt_name_chunk = subject_alt_name[0: 5] if len(subject_alt_name) > 5 else subject_alt_name
         except:
             continue
         else:
@@ -102,10 +102,18 @@ def save_output(lst: list) -> None:
 
 
 if __name__ == '__main__':
+    # initialize the search process
+    print('''
+ ________   ____  _______           __          
+/_  __/ /  / __/ / ___/ /  ___ ____/ /_____ ____
+ / / / /___\ \  / /__/ _ \/ -_) __/  '_/ -_) __/
+/_/ /____/___/  \___/_//_/\__/\__/_/\_\\__/_/
+         ''')
+    print('• https://github.com/ImanMontajabi/TLS-Checker')
+    print('• version: 1.2.3')
+    print('\n[ You can ignore the questions and just press Enter ↩ ]\n')
     # base path of files for read and save them
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    # initialize the search process
-    print('\n** You can ignore the questions and just press Enter **\n')
     get_file_name = input('- Which file? [i=irani.csv or 1=file1.csv or 2=file2.csv]:').strip().lower()
     if get_file_name == 'i':
         file_name = 'irani'
@@ -137,12 +145,10 @@ if __name__ == '__main__':
                 web_addrs.append(row[0])
 
     len_webaddr = len(web_addrs)
-
     """ 
     Get length of csv chunk and
     fill input_urls list for threads
     """
-
     input_urls = []
     try:
         how_many = int(input(f'- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:').strip())
