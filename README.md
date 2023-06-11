@@ -41,7 +41,6 @@ https://www.python.org/downloads/
 - Run the script with the following command:
 
 
-Use this command:
 ```
 python tls-checker.py
 ```
