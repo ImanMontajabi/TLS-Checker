@@ -13,11 +13,19 @@ try:
     from progress.spinner import MoonSpinner
     import patoolib
 except ImportError:
-    print('\n** Please install required modules: pip install -r requirements.txt **')
-    install = input('- Would you like to install requirements automatically? [y=YES, n=NO]:').strip().lower()
+    print('\nX Please install required modules X'
+          '\n• Commands for manually installing the requirements:\n'
+          '\n> pip install -r requirements.txt\n'
+          '\nor\n'
+          '\n> pip3 install -r requirements.txt\n'
+          )
+    install = input('• Would you like to install requirements automatically? [y=YES, n=NO]:').strip().lower()
     if install == 'y':
         import subprocess
-        subprocess.run('pip3 install -r requirements.txt'.split(' '))
+        try:
+            subprocess.run('pip install -r requirements.txt'.split(' '))
+        except  ModuleNotFoundError:
+            subprocess.run('pip3 install -r requirements.txt'.split(' '))
         import dns.resolver
         import requests
         from progress.spinner import MoonSpinner
