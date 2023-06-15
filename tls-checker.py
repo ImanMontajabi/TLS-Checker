@@ -93,7 +93,7 @@ def get_info(web_addrs: list) -> dict:
     return result
 
 
-def main() -> list:
+def main() -> None:
     outlist = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executer:
         tasks = [executer.submit(get_info, url_group) for url_group in input_urls]
@@ -101,7 +101,7 @@ def main() -> list:
             result = task.result()
             if result:
                 outlist.append(result)
-    return outlist
+    save_output(outlist)
 
 def save_output(lst: list) -> None:
     result_file = os.path.join(base_path, 'result.json')
@@ -190,9 +190,8 @@ if __name__ == '__main__':
     # set AS organization name and regex for filter AS organization names during search
     get_AS_organization_name = input('- preferred AS Organization? [Hetzner, Vultr, OVH, Akamai,...]:').strip().lower()
     pattern = re.compile(r'[^.,\s]*'+get_AS_organization_name+'[^.,\s]*[.,]?', re.IGNORECASE)
-    
-    outlist = main()
-    save_output(outlist)
+    #start main process
+    main()
     
 
     
