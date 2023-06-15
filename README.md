@@ -14,7 +14,7 @@ TLS Checker is a Python script for checking the Transport Layer Security (TLS) v
 
 🐍 [رفع مشکل python](https://sabzdanesh.com/set-python-path/)
 
-🚧 در ویندوز ترجیحا از [این نسخه‌ی پاورشل](https://github.com/PowerShell/PowerShell) به همراه [این برنامه‌ی ترمینال](https://github.com/microsoft/terminal) استفاده کنید 🙂
+🚧 در ویندوز ترجیحا از [این نسخه‌ی پاورشل](https://github.com/PowerShell/PowerShell) به همراه [این برنامه‌ی ترمینال](https://github.com/microsoft/terminal) استفاده کنید. 🙂
 <details dir="rtl">
  <summary>
   ❌ رفع مشکل کار نکردن برنامه در MacOS
@@ -27,6 +27,7 @@ ln -s /etc/ssl/* /Library/Frameworks/Python.framework/Versions/Current/etc/opens
 ```
  </details>
 
+🖊️ باقی مشکلات و یا پیشنهادات را درقسمت [Issues](https://github.com/ImanMontajabi/TLS-Checker/issues) مطرح کنید.
 # Installation
 To use TLS Checker, you will need Python 3.7 or later. You can download Python from the official website: 
 
@@ -72,8 +73,11 @@ ln -s /etc/ssl/* /Library/Frameworks/Python.framework/Versions/Current/etc/opens
 ```
  </details>
  
-# Screenshot
+# Screenshots
 
+
+![Screenshot (103)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/d57f619b-5bb3-4ded-85a3-8976cfe24c5d)
+-------------------------------
 ![Screenshot (99)](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/04bb5e03-24f3-4917-af56-dbbfa4bb2524)
 
 
