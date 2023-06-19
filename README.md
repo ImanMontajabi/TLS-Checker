@@ -27,7 +27,7 @@ ln -s /etc/ssl/* /Library/Frameworks/Python.framework/Versions/Current/etc/opens
 ```
  </details>
 
-🖊️ باقی مشکلات و یا پیشنهادات را درقسمت [Issues](https://github.com/ImanMontajabi/TLS-Checker/issues) مطرح کنید.
+
 # Installation
 To use TLS Checker, you will need Python 3.7 or later. You can download Python from the official website: 
 
