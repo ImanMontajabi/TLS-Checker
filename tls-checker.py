@@ -146,7 +146,7 @@ if __name__ == '__main__':
 /_/ /____/___/  \___/_//_/\__/\__/_/\_\\__/_/
          ''')
     print('• https://github.com/ImanMontajabi/TLS-Checker')
-    print('• version: 1.2.3')
+    print('• version: 1.2.4')
     print('\n[ You can ignore the questions and just press Enter ↩ ]\n')
     # base path of files for read and save them
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
