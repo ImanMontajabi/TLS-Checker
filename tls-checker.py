@@ -101,15 +101,18 @@ def main() -> None:
             result = task.result()
             if result:
                 outlist.append(result)
-
+    
+    save_output(outlist)
     outq = input('\n- Do you need sorted output? [y=YES, n=NO]:').strip().lower()
     if outq == 'y':
-        sort_output(outlist)
         print('+ The output was saved in sorted.txt file.')
+        sort_output(outlist)
+    elif outq == 'n':
+        sys.exit(0)
+    else:
+        sys.exit(1)
 
-    save_output(outlist)
-
-def sort_output(lst: list):
+def sort_output(lst: list) -> None:
     output_urls = [item for sublst in lst for item in sublst]
     not_sorted_dict = {}
     sorted_lst = []
@@ -210,11 +213,8 @@ if __name__ == '__main__':
     length = 30 if how_many >= 30 else 1
     for i in range(0, how_many, length):
         input_urls.append(web_addrs[i:min(i+length, how_many)])
-    # make a dictionary to find url and rank in next steps
-    flat_lst = [item for sublist in input_urls for item in sublist]
-    web_addrs_dict = dict(flat_lst)
-    ##print(web_addrs_dict) TODO delete this line
-
+    # make a dictionary to find rank and url in next steps
+    web_addrs_dict = dict(web_addrs)    
     # set iso code
     print('! Guide: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
     get_iso_name = input('- preferred country? [DE=Germany, NL=Netherland,...]:').strip().upper()
