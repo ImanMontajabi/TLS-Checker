@@ -46,9 +46,9 @@ def get_info(web_addrs: list) -> dict:
     for web_addr in web_addrs:
         spinner.next()
         try:
-            sock = socket.create_connection((web_addr, port), timeout=5)
-            conn = context.wrap_socket(sock, server_hostname=web_addr)
-            resolve_server = dns.resolver.resolve(web_addr)
+            sock = socket.create_connection((web_addr[0], port), timeout=5)
+            conn = context.wrap_socket(sock, server_hostname=web_addr[0])
+            resolve_server = dns.resolver.resolve(web_addr[0])
             ip_server = [rdata for rdata in resolve_server]
             url = f'https://api.findip.net/{ip_server[0]}/?token={api_token}'
             response = requests.get(url, timeout=5).json()
@@ -75,7 +75,7 @@ def get_info(web_addrs: list) -> dict:
                 condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3'))
             if condition:
                 print(
-                      f'\naddress = {web_addr}\nalpn = {conn.selected_alpn_protocol()}'
+                      f'\naddress = {web_addr[0]}\nalpn = {conn.selected_alpn_protocol()}'
                       f'\nissuer = {issuer}\ncipher = {cipher[0]}\nTLS = {cipher[1]}'
                       f'\nkey_length = {cipher[2]}\ncountry = {country}'
                       f'\niso_code = {iso_code}\ncity = {city}'
@@ -83,7 +83,7 @@ def get_info(web_addrs: list) -> dict:
                       f'\nsubject_alt_name = {" | ".join(map(str, subject_alt_name_chunk))}\n',
                       end=''
                      )
-                result[web_addr] = [
+                result[web_addr[0]] = [
                                     issuer, alpn, cipher[0], cipher[1], 
                                     cipher[2], country, iso_code, city,
                                     AS_organization, subject_alt_name
@@ -101,8 +101,33 @@ def main() -> None:
             result = task.result()
             if result:
                 outlist.append(result)
+
+    outq = input('\n- Do you need sorted output? [y=YES, n=NO]:').strip().lower()
+    if outq == 'y':
+        sort_output(outlist)
+        print('+ The output was saved in sorted.txt file.')
+
     save_output(outlist)
 
+def sort_output(lst: list):
+    output_urls = [item for sublst in lst for item in sublst]
+    not_sorted_dict = {}
+    sorted_lst = []
+
+    for url in output_urls:
+        not_sorted_dict[web_addrs_dict[url]] = url
+    sorted_lst = sorted(not_sorted_dict.items())
+
+    print(f'\nrank\t\turl\n{"-"*24}')
+    for item in sorted_lst:
+            print(f'{item[0]}\t\t{item[1]}')
+    
+    sorted_file = os.path.join(base_path, 'sorted.txt')
+    with open(sorted_file, 'w', encoding='utf-8') as f:
+        f.write(f'rank\t\turl\n{"-"*24}\n')
+        for item in sorted_lst:
+            f.write(f'{item[0]}\t\t{item[1]}\n')
+    
 def save_output(lst: list) -> None:
     result_file = os.path.join(base_path, 'result.json')
     with open(result_file, 'w', encoding='utf-8') as f:
@@ -139,8 +164,10 @@ if __name__ == '__main__':
     try:
         with open(addr_file) as urls:
             csv_reader = csv.reader(urls)
-            for row in csv_reader:
-                web_addrs.append(row[0])
+            for rank, row in enumerate(csv_reader):
+                web_addrs.append([row[0], rank + 1])
+                
+                
     except FileNotFoundError:
         zip_file = os.path.join(base_path, 'csvfiles.zip')
         zip_file_out = os.path.join(base_path, '')
@@ -149,15 +176,15 @@ if __name__ == '__main__':
 
         with open(addr_file) as urls:
             csv_reader = csv.reader(urls)
-            for row in csv_reader:
-                web_addrs.append(row[0])
+            for rank, row in enumerate(csv_reader):
+                web_addrs.append([row[0], rank + 1])
+                
 
     len_webaddr = len(web_addrs)
     """ 
     Get length of csv chunk and
     fill input_urls list for threads
     """
-    input_urls = []
     try:
         how_many = int(input(f'- How many url of "{file_name}.csv" do you want to check? [1-{len_webaddr}]:').strip())
         print(f'+ {how_many} urls are selected.')
@@ -178,10 +205,15 @@ if __name__ == '__main__':
         random.shuffle(web_addrs)
         print('+ Randomized search is selected.')
 
+    input_urls = []
     # make input of threads
     length = 30 if how_many >= 30 else 1
     for i in range(0, how_many, length):
         input_urls.append(web_addrs[i:min(i+length, how_many)])
+    # make a dictionary to find url and rank in next steps
+    flat_lst = [item for sublist in input_urls for item in sublist]
+    web_addrs_dict = dict(flat_lst)
+    ##print(web_addrs_dict) TODO delete this line
 
     # set iso code
     print('! Guide: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
