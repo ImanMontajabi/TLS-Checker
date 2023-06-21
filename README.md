@@ -14,7 +14,7 @@ TLS Checker is a Python script for checking the Transport Layer Security (TLS) v
 
 🐍 [رفع مشکل python](https://sabzdanesh.com/set-python-path/)
 
-🚧 در ویندوز ترجیحا از [این نسخه‌ی پاورشل](https://github.com/PowerShell/PowerShell) به همراه [این برنامه‌ی ترمینال](https://github.com/microsoft/terminal) استفاده کنید. 🙂
+🚧 در ویندوز ترجیحا از [این نسخه‌ی پاورشل](https://github.com/PowerShell/PowerShell) به همراه [این برنامه‌ی ترمینال](https://github.com/microsoft/terminal) استفاده کنید. 
 <details dir="rtl">
  <summary>
   ❌ رفع مشکل کار نکردن برنامه در MacOS
