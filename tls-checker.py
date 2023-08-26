@@ -7,11 +7,11 @@ import concurrent.futures
 import random
 import os
 import re
+import zipfile
 try:
     import dns.resolver
     import requests
     from progress.spinner import MoonSpinner
-    import patoolib
 except ImportError:
     print('\nX Please install required modules X'
           '\n• Commands for manually installing the requirements:\n'
@@ -29,7 +29,6 @@ except ImportError:
         import dns.resolver
         import requests
         from progress.spinner import MoonSpinner
-        import patoolib
     elif install == 'n':
         sys.exit(0)
     else:
@@ -174,7 +173,8 @@ if __name__ == '__main__':
     except FileNotFoundError:
         zip_file = os.path.join(base_path, 'csvfiles.zip')
         zip_file_out = os.path.join(base_path, '')
-        patoolib.extract_archive(zip_file, outdir=zip_file_out)
+        with zipfile.ZipFile(zip_file, 'r') as zip_ref:
+            zip_ref.extractall(zip_file_out)
         os.remove(zip_file)
 
         with open(addr_file) as urls:
