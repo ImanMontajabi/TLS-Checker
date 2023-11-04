@@ -14,7 +14,7 @@ TLS Checker is a Python script for checking the Transport Layer Security (TLS) v
 
 >  در ویندوز ترجیحا از [این نسخه‌ی پاورشل](https://github.com/PowerShell/PowerShell) به همراه [این برنامه‌ی ترمینال](https://github.com/microsoft/terminal) استفاده کنید.
 
-> برای پیداکردن ساب دامین از [این سایت](https://subdomainfinder.c99.nl/) اسنفاده کنید.
+> برای پیداکردن ساب دامین از [این سایت](https://subdomainfinder.c99.nl/) استفاده کنید.
 
 
 <details dir="rtl">
