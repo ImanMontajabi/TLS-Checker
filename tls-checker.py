@@ -65,13 +65,21 @@ def get_info(web_addrs: list) -> dict:
             continue
         else:
             if get_iso_name and get_AS_organization_name:
-                condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3')) and (get_iso_name == iso_code) and (pattern.findall(AS_organization))
+                condition = (cipher[1] == 'TLSv1.3') \
+                and ((alpn == 'h2') or (alpn == 'h3')) \
+                and (get_iso_name == iso_code) \
+                and(pattern.findall(AS_organization))
             elif get_iso_name:
-                condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3')) and (get_iso_name == iso_code)
+                condition = (cipher[1] == 'TLSv1.3') \
+                and ((alpn == 'h2') or (alpn == 'h3')) \
+                and (get_iso_name == iso_code)
             elif get_AS_organization_name:
-                condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3')) and (pattern.findall(AS_organization))
+                condition = (cipher[1] == 'TLSv1.3') \
+                and ((alpn == 'h2') or (alpn == 'h3')) \
+                and (pattern.findall(AS_organization))
             else:
-                condition = (cipher[1] == 'TLSv1.3') and ((alpn == 'h2') or (alpn == 'h3'))
+                condition = (cipher[1] == 'TLSv1.3') \
+                and ((alpn == 'h2') or (alpn == 'h3'))
             if condition:
                 print(
                       f'\naddress = {web_addr[0]}\nalpn = {conn.selected_alpn_protocol()}'
