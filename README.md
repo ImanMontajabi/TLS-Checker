@@ -1,11 +1,13 @@
-![TLS-Checker](https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/739c31cb-f1d9-48f5-a630-259f59f11e71)
+<p align="center">
+<img src="https://github.com/ImanMontajabi/TLS-Checker/assets/52942515/739c31cb-f1d9-48f5-a630-259f59f11e71">
+</p>
 
 
+<h1 align="center">TLS Checker 🌐</h1>
+<p align="center">TLS Checker is a Python script for checking the Transport Layer Security (TLS) version and security settings of a list of websites. The script uses multithreading to speed up the process of checking a large number of websites.</p>
 
+-------------------------------------------------------
 
-# TLS Checker 🌐
-
-TLS Checker is a Python script for checking the Transport Layer Security (TLS) version and security settings of a list of websites. The script uses multithreading to speed up the process of checking a large number of websites.
 
 # Common Issues
 
