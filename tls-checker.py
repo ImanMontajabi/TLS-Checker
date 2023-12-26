@@ -224,7 +224,7 @@ if __name__ == '__main__':
     # make a dictionary to find rank and url in next steps
     web_addrs_dict = dict(web_addrs)    
     # set iso code
-    print('! Guide: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
+    print('! Hint: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes')
     get_iso_name = input('- preferred country? [DE=Germany, NL=Netherland,...]:').strip().upper()
 
     # set AS organization name and regex for filter AS organization names during search
