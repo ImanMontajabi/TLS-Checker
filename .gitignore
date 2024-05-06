@@ -1,4 +1,6 @@
 venv
 *.json
 *.csv
+*.txt
+*.zip
 .idea/

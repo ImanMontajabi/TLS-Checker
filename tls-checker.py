@@ -8,8 +8,9 @@ import random
 import os
 import re
 import zipfile
+
 try:
-    import dns.resolver
+    from dns import resolver
     import requests
     from progress.spinner import MoonSpinner
 except ImportError:
@@ -47,7 +48,7 @@ def get_info(web_addrs: list) -> dict:
         try:
             sock = socket.create_connection((web_addr[0], port), timeout=5)
             conn = context.wrap_socket(sock, server_hostname=web_addr[0])
-            resolve_server = dns.resolver.resolve(web_addr[0])
+            resolve_server = resolver.resolve(web_addr[0])
             ip_server = [rdata for rdata in resolve_server]
             url = f'https://api.findip.net/{ip_server[0]}/?token={api_token}'
             response = requests.get(url, timeout=5).json()
