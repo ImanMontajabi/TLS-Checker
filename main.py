@@ -2,7 +2,6 @@ import os
 import csv
 import signal
 import asyncio
-from typing import List, Dict, Set
 
 import aiodns
 import aiohttp
@@ -13,7 +12,7 @@ load_dotenv()
 token = os.getenv('ip_token')
 
 # TODO: write docstring for functions
-_DO_NOT_CANCEL_TASKS: Set[asyncio.Task] = set()
+_DO_NOT_CANCEL_TASKS: set[asyncio.Task] = set()
 
 
 def protect(task: asyncio.Task) -> None:
@@ -35,15 +34,19 @@ def shutdown(sig: signal.Signals) -> None:
 def setup_signal_handler() -> None:
     loop = asyncio.get_running_loop()
 
+    '''
+    SIGHUP: Hangup Signal - connection lost
+    SIGTERM: Termination Signal - completely done and termination
+    SIGINT: Interrupt Signal - interrupt running process by pressing ctrl+c
+    first "sig" is variable of for-loop (received signal) and second "sig" is 
+    the argument passed to shutdown'''
     for sig in (signal.SIGHUP, signal.SIGTERM, signal.SIGINT):
         loop.add_signal_handler(sig, shutdown, sig)
-        '''first sig is variable of loop (received signal) and second sig is 
-        the argument passed to shutdown'''
 
 
 async def dns_resolve(semaphore, resolver, host_name) -> dict:
-    ips: List[str] = []
-    output: Dict[str, List[str]] = dict()
+    ips: list[str] = list()
+    output: dict[str, list[str]] = dict()
 
     async with semaphore:
         try:
@@ -66,13 +69,20 @@ async def dns_resolve(semaphore, resolver, host_name) -> dict:
 async def ip_lookup(ip: str):
     url = f'https://api.findip.net/{ip}/?token={token}'
     async with aiohttp.ClientSession() as session:
-        async with session.get(url) as resp:
-            json_resp = await resp.json()
-            if json_resp:
-                print(json_resp)
+        async with session.get(url, allow_redirects=False, timeout=3) as resp:
+            try:
+                json_resp = await resp.json()
+                country: str = json_resp['country']['names']['en']
+                iso_code = json_resp['country']['iso_code']
+                city: str = json_resp['city']['names']['en']
+                isp = json_resp['traits']['isp']
+            except Exception as e:
+                print(e)
+            else:
+                print(f'{ip}: {country}({iso_code}) - {city} - {isp}')
 
 
-async def main():
+async def main() -> None:
     setup_signal_handler()
     '''Protect main task from being cancelled, otherwise it will cancel
     all other tasks'''
@@ -82,7 +92,7 @@ async def main():
     semaphore = asyncio.Semaphore(100)
 
     full_length = int(input('How many urls: '))
-    host_names: List[str] = []
+    host_names: list[str] = []
 
     base_path = os.path.dirname(__file__)
     csv_path = os.path.join(base_path, 'file2.csv')

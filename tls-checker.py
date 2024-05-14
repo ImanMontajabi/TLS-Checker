@@ -18,8 +18,7 @@ except ImportError:
           '\n• Commands for manually installing the requirements:\n'
           '\n> pip install -r requirements.txt\n'
           '\nor\n'
-          '\n> pip3 install -r requirements.txt\n'
-         )
+          '\n> pip3 install -r requirements.txt\n')
     install = input('- Would you like to install requirements automatically? [y=YES, n=NO]:').strip().lower()
     if install == 'y':
         import subprocess
