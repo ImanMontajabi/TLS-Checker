@@ -4,8 +4,8 @@ import signal
 import asyncio
 
 import aiodns
-import aiohttp
 from dotenv import load_dotenv
+import tqdm.asyncio
 
 
 load_dotenv()
@@ -32,6 +32,13 @@ def shutdown(sig: signal.Signals) -> None:
 
 
 def setup_signal_handler() -> None:
+    """
+    This function gets running loop and add specific signals to the loop.
+
+    :param: None
+
+    :return: None
+    """
     loop = asyncio.get_running_loop()
 
     '''
@@ -45,17 +52,27 @@ def setup_signal_handler() -> None:
 
 
 async def dns_resolve(semaphore, resolver, host_name) -> dict:
-    ips: list[str] = list()
-    output: dict[str, list[str]] = dict()
+    ipv4: list[str] = list()
+    ipv6: list[str] = list()
+    ip_v4_v6: dict[str, list[str]] = dict()
+    output: dict[str, dict[str, list[str]]] = dict()
 
     async with semaphore:
         try:
             resp = await asyncio.wait_for(
                 resolver.query(host_name, 'A'), timeout=3)
             for ip in resp:
-                ips.append(ip.host)
-            output[host_name] = ips
-            await ip_lookup(ips[0])
+                if ip:
+                    ipv4.append(ip.host)
+            ip_v4_v6['ipv4'] = ipv4
+
+            resp = await asyncio.wait_for(
+                resolver.query(host_name, 'AAAA'), timeout=3)
+            for ip in resp:
+                if ip:
+                    ipv6.append(ip.host)
+            ip_v4_v6['ipv6'] = ipv6
+            output[host_name] = ip_v4_v6
             # print(output)
             return output
         except asyncio.CancelledError:
@@ -66,30 +83,15 @@ async def dns_resolve(semaphore, resolver, host_name) -> dict:
             pass
 
 
-async def ip_lookup(ip: str):
-    url = f'https://api.findip.net/{ip}/?token={token}'
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url, allow_redirects=False, timeout=3) as resp:
-            try:
-                json_resp = await resp.json()
-                country: str = json_resp['country']['names']['en']
-                iso_code = json_resp['country']['iso_code']
-                city: str = json_resp['city']['names']['en']
-                isp = json_resp['traits']['isp']
-            except Exception as e:
-                print(e)
-            else:
-                print(f'{ip}: {country}({iso_code}) - {city} - {isp}')
-
-
 async def main() -> None:
     setup_signal_handler()
+
     '''Protect main task from being cancelled, otherwise it will cancel
     all other tasks'''
     protect(asyncio.current_task())
 
     resolver = aiodns.DNSResolver()
-    semaphore = asyncio.Semaphore(100)
+    semaphore = asyncio.Semaphore(1000)
 
     full_length = int(input('How many urls: '))
     host_names: list[str] = []
@@ -105,12 +107,16 @@ async def main() -> None:
                 break
 
     tasks = []
+    results = []
     for host_name in host_names:
         tasks.append(dns_resolve(semaphore, resolver, host_name))
 
-    '''wait for all tasks to finish'''
-    result = await asyncio.gather(*tasks)
-    # print(len(result))
+    '''wait for all tasks to finish and show progress bar'''
+    for f in tqdm.asyncio.tqdm.as_completed(tasks):
+        result = await f
+        if result:
+            results.append(result)
+    # print(results)
 
 
 if __name__ == '__main__':
