@@ -1,9 +1,10 @@
 import os
+import sys
 import csv
 import signal
 import asyncio
 import sqlite3
-from sys import exit
+from sys import exit, stdout
 
 import aiodns
 import tqdm.asyncio
@@ -153,12 +154,13 @@ async def main() -> None:
     for domain_name in domain_names:
         tasks.append(dns_resolve(semaphore, resolver, domain_name))
     '''wait for all tasks to finish and show progress bar'''
-    for f in tqdm.asyncio.tqdm.as_completed(tasks):
-        result = await f
-        if result:
-            results.append(result)
-
-    save_results(results)
+    try:
+        for f in tqdm.asyncio.tqdm.as_completed(tasks):
+            result = await f
+            if result:
+                results.append(result)
+    finally:
+        save_results(results)
 
 
 if __name__ == '__main__':
