@@ -1,10 +1,9 @@
 import os
-import sys
 import csv
 import signal
 import asyncio
 import sqlite3
-from sys import exit, stdout
+from sys import exit
 
 import aiodns
 import tqdm.asyncio
@@ -55,8 +54,8 @@ def setup_signal_handler() -> None:
 
 
 async def dns_resolve(semaphore, resolver, domain_name) -> dict:
-    ipv4: list[str] = list()
-    ipv6: list[str] = list()
+    ipv4: list[str | None] = list()
+    ipv6: list[str | None] = list()
     ip_v4_v6: dict[str, list[str]] = dict()
     output: dict[str, dict[str, list[str]]] = dict()
 
@@ -67,6 +66,8 @@ async def dns_resolve(semaphore, resolver, domain_name) -> dict:
             for ip in resp:
                 if ip:
                     ipv4.append(ip.host)
+            if not ipv4:
+                ipv4.append(None)
             ip_v4_v6['ipv4'] = ipv4
 
             resp = await asyncio.wait_for(
@@ -74,6 +75,8 @@ async def dns_resolve(semaphore, resolver, domain_name) -> dict:
             for ip in resp:
                 if ip:
                     ipv6.append(ip.host)
+            if not ipv6:
+                ipv6.append(None)
             ip_v4_v6['ipv6'] = ipv6
             output[domain_name] = ip_v4_v6
             # print(output)
@@ -103,37 +106,47 @@ def open_csv(number: int) -> list:
 
 
 def save_results(result_list: list) -> None:
-    query_data: list[tuple[str, str, str]] = list()
+    query_data: list[tuple] = list()
     '''Extract domain and ipv4, ipv6 and ... saves into query_data list'''
     for result in result_list:
         domain_name: str = list(result.keys())[0]
-        ipv4: str = ','.join(list(list(result.values())[0].values())[0])
-        ipv6: str = ','.join(list(list(result.values())[0].values())[1])
+        ipv4_list = list(list(result.values())[0].values())[0]
+        ipv6_list = list(list(result.values())[0].values())[1]
+        if None in ipv4_list:
+            ipv4 = None
+        else:
+            ipv4 = ','.join(ipv4_list)
+        if None in ipv6_list:
+            ipv6 = None
+        else:
+            ipv6 = ','.join(ipv6_list)
         query_data.append((domain_name, ipv4, ipv6))
     try:
         con = sqlite3.connect('output.db')
         cur = con.cursor()
+
+        cur.execute('''
+            CREATE TABLE IF NOT EXISTS results (
+            domain_name TEXT PRIMARY KEY,
+            ipv4 TEXT,
+            ipv6 TEXT
+            )
+        ''')
+
+        cur.executemany('''
+            INSERT OR REPLACE INTO results (
+                domain_name,
+                ipv4,
+                ipv6
+            ) VALUES (?, ?, ?)
+        ''', query_data)
     except sqlite3.DatabaseError as e:
         print(f'Database connection was unsuccessful: {e}')
         exit(1)
-
-    cur.execute('''
-        CREATE TABLE IF NOT EXISTS results (
-        domain_name TEXT PRIMARY KEY,
-        ipv4 TEXT,
-        ipv6 TEXT
-        )
-    ''')
-
-    cur.executemany('''
-        INSERT OR REPLACE INTO results (
-            domain_name,
-            ipv4,
-            ipv6
-        ) VALUES (?, ?, ?)
-    ''', query_data)
-    con.commit()
-    con.close()
+    else:
+        con.commit()
+        if con:
+            con.close()
 
 
 async def main() -> None:
