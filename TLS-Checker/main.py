@@ -122,7 +122,7 @@ def save_results(result_list: list) -> None:
             ipv6 = ','.join(ipv6_list)
         query_data.append((domain_name, ipv4, ipv6))
     try:
-        con = sqlite3.connect('output.db')
+        con = sqlite3.connect('../output.db')
         cur = con.cursor()
 
         cur.execute('''
