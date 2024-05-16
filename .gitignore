@@ -4,3 +4,4 @@ venv
 *.txt
 *.zip
 .idea/
+*.mmdb
