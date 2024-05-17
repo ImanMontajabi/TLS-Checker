@@ -2,14 +2,17 @@ import os
 import csv
 import signal
 import asyncio
-import sqlite3
-from sys import exit
 
 import aiodns
 import tqdm.asyncio
 from dotenv import load_dotenv
+from geoip2 import errors
+
+from geo_ip import geo_information
+from save_to_database import save
 
 
+path = os.getcwd()
 load_dotenv()
 token = os.getenv('ip_token')
 
@@ -53,7 +56,7 @@ def setup_signal_handler() -> None:
         loop.add_signal_handler(sig, shutdown, sig)
 
 
-async def dns_resolve(semaphore, resolver, domain_name) -> dict:
+async def dns_resolve(semaphore, resolver, domain_name, t: int = 3) -> dict:
     ipv4: list[str | None] = list()
     ipv6: list[str | None] = list()
     ip_v4_v6: dict[str, list[str]] = dict()
@@ -62,7 +65,7 @@ async def dns_resolve(semaphore, resolver, domain_name) -> dict:
     async with semaphore:
         try:
             resp = await asyncio.wait_for(
-                resolver.query(domain_name, 'A'), timeout=3)
+                resolver.query(domain_name, 'A'), timeout=t)
             for ip in resp:
                 if ip:
                     ipv4.append(ip.host)
@@ -71,7 +74,7 @@ async def dns_resolve(semaphore, resolver, domain_name) -> dict:
             ip_v4_v6['ipv4'] = ipv4
 
             resp = await asyncio.wait_for(
-                resolver.query(domain_name, 'AAAA'), timeout=3)
+                resolver.query(domain_name, 'AAAA'), timeout=t)
             for ip in resp:
                 if ip:
                     ipv6.append(ip.host)
@@ -94,7 +97,7 @@ def open_csv(number: int) -> list:
     domain_names: list[str] = []
 
     base_path = os.path.dirname(__file__)
-    csv_path = os.path.join(base_path, 'irani.csv')
+    csv_path = os.path.join(base_path, f'{path}/file2.csv')
 
     with open(csv_path) as csv_file:
         domains = csv.reader(csv_file)
@@ -105,48 +108,52 @@ def open_csv(number: int) -> list:
     return domain_names
 
 
-def save_results(result_list: list) -> None:
+def get_results(result_list: list) -> list[tuple]:
     query_data: list[tuple] = list()
     '''Extract domain and ipv4, ipv6 and ... saves into query_data list'''
     for result in result_list:
+        ipv4: str | None = None
+        ipv6: str | None = None
+        asn: int | None = None
+        asn_organ: str | None = None
+        iso_code: int | None = None
+        country: str | None = None
+
         domain_name: str = list(result.keys())[0]
         ipv4_list = list(list(result.values())[0].values())[0]
         ipv6_list = list(list(result.values())[0].values())[1]
-        if None in ipv4_list:
-            ipv4 = None
-        else:
+        if None not in ipv4_list:
             ipv4 = ','.join(ipv4_list)
-        if None in ipv6_list:
-            ipv6 = None
-        else:
+            '''this gets geo info from geo_ip module'''
+            try:
+                geo_info = geo_information(ipv4_list[0])
+                asn = geo_info[0]
+                asn_organ = geo_info[1]
+                iso_code = geo_info[2]
+                country = geo_info[3]
+            except errors.AddressNotFoundError as e:
+                # print(f'There is no geo info for {domain_name}: {ipv4} in'
+                #       f'data base probably updating geo ip database solve the'
+                #       f'problem\nerror{e}')
+                pass
+
+        if None not in ipv6_list:
             ipv6 = ','.join(ipv6_list)
-        query_data.append((domain_name, ipv4, ipv6))
-    try:
-        con = sqlite3.connect('../output.db')
-        cur = con.cursor()
+        query_data.append(
+            (domain_name, ipv4, ipv6, asn, asn_organ, iso_code, country)
+        )
+    return query_data
 
-        cur.execute('''
-            CREATE TABLE IF NOT EXISTS results (
-            domain_name TEXT PRIMARY KEY,
-            ipv4 TEXT,
-            ipv6 TEXT
-            )
-        ''')
 
-        cur.executemany('''
-            INSERT OR REPLACE INTO results (
-                domain_name,
-                ipv4,
-                ipv6
-            ) VALUES (?, ?, ?)
-        ''', query_data)
-    except sqlite3.DatabaseError as e:
-        print(f'Database connection was unsuccessful: {e}')
-        exit(1)
-    else:
-        con.commit()
-        if con:
-            con.close()
+def create_tasks(length: int) -> list:
+    # t: int = 3
+    resolver = aiodns.DNSResolver()
+    semaphore = asyncio.Semaphore(100)
+    domain_names = open_csv(length)
+    tasks = list()
+    for domain_name in domain_names:
+        tasks.append(dns_resolve(semaphore, resolver, domain_name))
+    return tasks
 
 
 async def main() -> None:
@@ -156,16 +163,12 @@ async def main() -> None:
     all other tasks'''
     protect(asyncio.current_task())
 
-    resolver = aiodns.DNSResolver()
-    semaphore = asyncio.Semaphore(100)
+    length = int(input('How many domains: '))
 
-    full_length = int(input('How many domains: '))
-    domain_names = open_csv(full_length)
+    tasks = create_tasks(length)
 
-    tasks = []
     results = []
-    for domain_name in domain_names:
-        tasks.append(dns_resolve(semaphore, resolver, domain_name))
+
     '''wait for all tasks to finish and show progress bar'''
     try:
         for f in tqdm.asyncio.tqdm.as_completed(tasks):
@@ -173,7 +176,7 @@ async def main() -> None:
             if result:
                 results.append(result)
     finally:
-        save_results(results)
+        save(get_results(results))
 
 
 if __name__ == '__main__':

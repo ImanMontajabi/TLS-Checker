@@ -1,8 +1,9 @@
 import asyncio
 
-import aiohttp
 import tqdm
+import aiohttp
 import tqdm.asyncio
+from aiofile import async_open
 
 
 repo_url = 'https://api.github.com/repos/P3TERX/GeoLite.mmdb/releases/latest'
@@ -12,11 +13,13 @@ async def get_db(name, url):
     async with aiohttp.ClientSession() as session:
         try:
             async with session.get(url, proxy="http://192.168.1.101:8080") as response:
+                status_code = response.status
                 data = await response.read()
-                with open(name, 'wb') as f:
-                    f.write(data)
+                async with async_open(name, 'wb') as afb:
+                    await afb.write(data)
         except Exception as e:
-            print(f'Download {name} from {url} was unsuccessful \nerror: {e}')
+            print(f'Download {name} was unsuccessful '
+                  f'\nstatus code: {status_code}\nerror: {e}')
         else:
             return name
 
@@ -34,7 +37,9 @@ async def get_info():
                   f'\nerror: {e}')
         try:
             for asset in resp.get('assets', []):
-                file_info[asset['name']] = asset['browser_download_url']
+                # countries are extra and asn and city are enough
+                if asset['name'] != 'GeoLite2-Country.mmdb':
+                    file_info[asset['name']] = asset['browser_download_url']
         except Exception as e:
             print(f'Fetching data from api was unsuccessful: {e}')
         else:
