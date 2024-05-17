@@ -5,3 +5,4 @@ venv
 *.zip
 .idea/
 TLS-Checker/*.mmdb
+TLS-Checker/__pycache__
