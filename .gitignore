@@ -4,4 +4,4 @@ venv
 *.txt
 *.zip
 .idea/
-*.mmdb
+TLS-Checker/*.mmdb
