@@ -50,4 +50,5 @@ async def get_info():
                 tqdm.tqdm.write(f'"{name}" has downloaded successfully')
 
 
-asyncio.run(get_info())
+def update():
+    asyncio.run(get_info())

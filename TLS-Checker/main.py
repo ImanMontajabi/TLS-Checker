@@ -1,23 +1,26 @@
 import os
 import csv
+import json
 import signal
+import atexit
 import asyncio
+import logging.config
+import logging.handlers
 
 import aiodns
 import tqdm.asyncio
-from dotenv import load_dotenv
 from geoip2 import errors
+from dotenv import load_dotenv
 
-from geo_ip import geo_information
+import logger
 from save_to_database import save
+from geo_ip import geo_information
 
 
-path = os.getcwd()
 load_dotenv()
-token = os.getenv('ip_token')
-
-# TODO: write docstring for functions
+this_path: str = os.getcwd()
 _DO_NOT_CANCEL_TASKS: set[asyncio.Task] = set()
+logger = logging.getLogger(__name__)
 
 
 def protect(task: asyncio.Task) -> None:
@@ -25,7 +28,8 @@ def protect(task: asyncio.Task) -> None:
 
 
 def shutdown(sig: signal.Signals) -> None:
-    print(f'Received exit signal {sig.name}')
+    logger.info(f'Received exit signal {sig.name}')
+    # print(f'Received exit signal {sig.name}')
 
     all_tasks = asyncio.all_tasks()
     task_to_cancel = all_tasks - _DO_NOT_CANCEL_TASKS
@@ -33,17 +37,13 @@ def shutdown(sig: signal.Signals) -> None:
     for task in task_to_cancel:
         task.cancel()
 
-    print(f'Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
+    logger.info(f'Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
+    # print(f'Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
 
 
 def setup_signal_handler() -> None:
-    """
-    This function gets running loop and add specific signals to the loop.
+    """This function gets running loop and add specific signals to the loop."""
 
-    :param: None
-
-    :return: None
-    """
     loop = asyncio.get_running_loop()
 
     '''
@@ -71,6 +71,9 @@ async def dns_resolve(semaphore, resolver, domain_name, t: int = 3) -> dict:
                     ipv4.append(ip.host)
             if not ipv4:
                 ipv4.append(None)
+                logger.warning(
+                    f'No IPv4 found for {domain_name}',
+                    extra={'domain': domain_name, 'ip_version': 4})
             ip_v4_v6['ipv4'] = ipv4
 
             resp = await asyncio.wait_for(
@@ -80,11 +83,15 @@ async def dns_resolve(semaphore, resolver, domain_name, t: int = 3) -> dict:
                     ipv6.append(ip.host)
             if not ipv6:
                 ipv6.append(None)
+                logger.warning(
+                    f'No IPv6 found for {domain_name}',
+                    extra={'domain': domain_name, 'ip_version': 6})
             ip_v4_v6['ipv6'] = ipv6
             output[domain_name] = ip_v4_v6
             # print(output)
         except asyncio.CancelledError:
-            print(f'Cancelled!!!!')
+            logger.error('Task cancelled by user!')
+            # print(f'Cancelled!!!!')
         except aiodns.error.DNSError:
             pass
         except asyncio.TimeoutError:
@@ -96,8 +103,7 @@ async def dns_resolve(semaphore, resolver, domain_name, t: int = 3) -> dict:
 def open_csv(number: int) -> list:
     domain_names: list[str] = []
 
-    base_path = os.path.dirname(__file__)
-    csv_path = os.path.join(base_path, f'{path}/file2.csv')
+    csv_path = os.path.join(this_path, 'file2.csv')
 
     with open(csv_path) as csv_file:
         domains = csv.reader(csv_file)
@@ -132,9 +138,9 @@ def get_results(result_list: list) -> list[tuple]:
                 iso_code = geo_info[2]
                 country = geo_info[3]
             except errors.AddressNotFoundError as e:
-                # print(f'There is no geo info for {domain_name}: {ipv4} in'
-                #       f'data base probably updating geo ip database solve the'
-                #       f'problem\nerror{e}')
+                logger.exception(f'There is no geo info for {domain_name}:'
+                                 f' {ipv4} in data base probably updating geo'
+                                 f' ip database solve the problem\nerror: {e}')
                 pass
 
         if None not in ipv6_list:
@@ -156,8 +162,24 @@ def create_tasks(length: int) -> list:
     return tasks
 
 
+def setup_logger():
+    """
+    This function initiates  logger from logger_config using dictConfig
+    """
+    config_file = os.path.join(this_path, 'logger_config.json')
+    with open(config_file) as cf:
+        config = json.load(cf)
+
+    logging.config.dictConfig(config)
+    queue_handler = logging.getHandlerByName('queue_handler')
+    if queue_handler is not None:
+        queue_handler.listener.start()
+        atexit.register(queue_handler.listener.stop)
+
+
 async def main() -> None:
     setup_signal_handler()
+    setup_logger()
 
     '''Protect main task from being cancelled, otherwise it will cancel
     all other tasks'''
@@ -183,6 +205,6 @@ if __name__ == '__main__':
     try:
         asyncio.run(main())
     except (KeyboardInterrupt, asyncio.CancelledError):
-        print('App was interrupt')
+        logger.error('App was interrupt')
     else:
-        print('App was finished gracefully')
+        logger.info('App was finished gracefully')
