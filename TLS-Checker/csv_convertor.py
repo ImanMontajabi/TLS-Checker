@@ -105,7 +105,7 @@ def convertor(database_dir: str) -> None:
             print(f'| convertor > {e}')
             logger.exception(f'converting encountered an error: {e}')
         else:
-            print(f'| Data export from {table_name} was successful.')
+            print(f'| Data exported from {table_name} successfully ✓')
             logger.info(f'Successfully converted')
 
     con.close()

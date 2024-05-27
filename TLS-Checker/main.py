@@ -209,10 +209,9 @@ def create_tasks(domain_list: list) -> list:
 
     resolver = aiodns.DNSResolver()
     semaphore = asyncio.Semaphore(active_tasks)
-    tasks = list()
 
-    for domain_name in domain_chunk_list:
-        tasks.append(dns_resolve(semaphore, resolver, domain_name, timeout))
+    tasks = [dns_resolve(semaphore, resolver, domain_name, timeout)
+             for domain_name in domain_chunk_list]
     return tasks
 
 
@@ -240,7 +239,7 @@ async def main() -> None:
         print('| Saved data into output.db ✓')
         logger.info('Saving data into output.db was successfully')
         database_convert()
-        print('| Database successfully converted to csv file')
+        print('| Database successfully converted to csv file ✓')
         logger.info('Database successfully converted to csv file')
 
 
@@ -257,4 +256,4 @@ if __name__ == '__main__':
         logger.exception(f'TLS-Checker was cancelled: {e}')
     else:
         logger.info('App was finished gracefully')
-        print('| App finished gracefully')
+        print('| App finished gracefully ✓')
