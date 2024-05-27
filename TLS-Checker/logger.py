@@ -4,7 +4,7 @@ import logging
 from typing import override
 
 
-# delete this values
+# delete of modify this values
 LOG_RECORD_BUILTIN_ATTR = {
     'name': True,
     'levelname': True,
@@ -62,4 +62,4 @@ class MyJSONFormatter(logging.Formatter):
 class ExactInfoFilter(logging.Filter):
     @override
     def filter(self, record: logging.LogRecord) -> bool:
-        return record.levelno == logging.INFO
+        return record.levelno == logging.WARNING

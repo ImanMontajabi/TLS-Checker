@@ -1,5 +1,6 @@
-dnspython==2.3.0
-requests==2.31.0
-progress==1.6
+tqdm==4.66.4
+geoip2==4.8.0
 aiodns==3.2.0
 aiohttp==3.9.5
+aiofile==3.8.8
+requests==2.31.0

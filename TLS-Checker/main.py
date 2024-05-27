@@ -1,26 +1,24 @@
 import os
 import csv
-import json
 import signal
-import atexit
 import asyncio
-import logging.config
 import logging.handlers
+from random import shuffle
 
 import aiodns
 import tqdm.asyncio
 from geoip2 import errors
-from dotenv import load_dotenv
 
-import logger
+import setup_logger
+import update_geoip_db
 from save_to_database import save
 from geo_ip import geo_information
+from csv_convertor import database_convert
 
 
-load_dotenv()
 this_path: str = os.getcwd()
-_DO_NOT_CANCEL_TASKS: set[asyncio.Task] = set()
 logger = logging.getLogger(__name__)
+_DO_NOT_CANCEL_TASKS: set[asyncio.Task] = set()
 
 
 def protect(task: asyncio.Task) -> None:
@@ -28,8 +26,7 @@ def protect(task: asyncio.Task) -> None:
 
 
 def shutdown(sig: signal.Signals) -> None:
-    logger.info(f'Received exit signal {sig.name}')
-    # print(f'Received exit signal {sig.name}')
+    logger.error(f'Received {sig.name} signal')
 
     all_tasks = asyncio.all_tasks()
     task_to_cancel = all_tasks - _DO_NOT_CANCEL_TASKS
@@ -38,7 +35,7 @@ def shutdown(sig: signal.Signals) -> None:
         task.cancel()
 
     logger.info(f'Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
-    # print(f'Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
+    print(f'\n| Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
 
 
 def setup_signal_handler() -> None:
@@ -56,7 +53,7 @@ def setup_signal_handler() -> None:
         loop.add_signal_handler(sig, shutdown, sig)
 
 
-async def dns_resolve(semaphore, resolver, domain_name, t: int = 3) -> dict:
+async def dns_resolve(semaphore, resolver, domain_name, timeout=3) -> dict:
     ipv4: list[str | None] = list()
     ipv6: list[str | None] = list()
     ip_v4_v6: dict[str, list[str]] = dict()
@@ -65,53 +62,59 @@ async def dns_resolve(semaphore, resolver, domain_name, t: int = 3) -> dict:
     async with semaphore:
         try:
             resp = await asyncio.wait_for(
-                resolver.query(domain_name, 'A'), timeout=t)
+                resolver.query(domain_name, 'A'), timeout=timeout)
             for ip in resp:
                 if ip:
                     ipv4.append(ip.host)
             if not ipv4:
                 ipv4.append(None)
-                logger.warning(
+                logger.info(
                     f'No IPv4 found for {domain_name}',
                     extra={'domain': domain_name, 'ip_version': 4})
             ip_v4_v6['ipv4'] = ipv4
 
             resp = await asyncio.wait_for(
-                resolver.query(domain_name, 'AAAA'), timeout=t)
+                resolver.query(domain_name, 'AAAA'), timeout=timeout)
             for ip in resp:
                 if ip:
                     ipv6.append(ip.host)
             if not ipv6:
                 ipv6.append(None)
-                logger.warning(
+                logger.info(
                     f'No IPv6 found for {domain_name}',
                     extra={'domain': domain_name, 'ip_version': 6})
             ip_v4_v6['ipv6'] = ipv6
             output[domain_name] = ip_v4_v6
-            # print(output)
-        except asyncio.CancelledError:
-            logger.error('Task cancelled by user!')
-            # print(f'Cancelled!!!!')
-        except aiodns.error.DNSError:
-            pass
-        except asyncio.TimeoutError:
-            pass
+        except asyncio.CancelledError as c_e:
+            logger.exception(f'Task cancelled by user: {c_e}')
+        except aiodns.error.DNSError as dns_e:
+            logger.exception(f'DNSError: {dns_e}')
+        except asyncio.TimeoutError as to_e:
+            logger.exception(f'Timeout Error: {to_e}')
         else:
             return output
 
 
-def open_csv(number: int) -> list:
-    domain_names: list[str] = []
-
-    csv_path = os.path.join(this_path, 'file2.csv')
+def open_csv() -> list:
+    domain_list: list[str] = []
+    logger.info('Start reading input.csv')
+    print('| Start reading input.csv')
+    csv_path: str = os.path.join(this_path, 'input.csv')
 
     with open(csv_path) as csv_file:
-        domains = csv.reader(csv_file)
-        for domain in domains:
-            domain_names.append(domain[0])
-            if len(domain_names) >= number:
-                break
-    return domain_names
+        rows = csv.reader(csv_file)
+        for row in rows:
+            domain_list.append(row[0])
+
+    logger.info('Successfully extracted domains from input.csv')
+    print('| Successfully extracted domains from input.csv')
+    print(f'| {74 * "-"}')
+
+    return domain_list
+
+
+def save_csv():
+    ...
 
 
 def get_results(result_list: list) -> list[tuple]:
@@ -137,10 +140,11 @@ def get_results(result_list: list) -> list[tuple]:
                 asn_organ = geo_info[1]
                 iso_code = geo_info[2]
                 country = geo_info[3]
-            except errors.AddressNotFoundError as e:
+            except errors.AddressNotFoundError as anf_e:
                 logger.exception(f'There is no geo info for {domain_name}:'
                                  f' {ipv4} in data base probably updating geo'
-                                 f' ip database solve the problem\nerror: {e}')
+                                 f' ip database solve the problem\n'
+                                 f'error: {anf_e}')
                 pass
 
         if None not in ipv6_list:
@@ -151,43 +155,64 @@ def get_results(result_list: list) -> list[tuple]:
     return query_data
 
 
-def create_tasks(length: int) -> list:
-    # t: int = 3
+def create_tasks(domain_list: list) -> list:
+    domain_list_length: int = len(domain_list)
+    logger.info('Start config before scanning')
+    print(f'| input.csv includes {domain_list_length} domains')
+
+    try:
+        domain_chunk_len: int = int(input(
+            f'| How many of them? [default={domain_list_length}]: ').strip())
+    except ValueError as ve:
+        logger.error(f'Invalid value, just integer is acceptable: {ve}')
+        domain_chunk_len = domain_list_length
+
+    random_normal: str = input('| [R]: Randomized search  '
+                               '[N]: Normal search '
+                               '[default=N]: ').strip().lower()
+    if random_normal == 'r':
+        shuffle(domain_list)
+        domain_chunk_list: list = domain_list[0: domain_chunk_len]
+    else:
+        domain_chunk_list: list = domain_list[0: domain_chunk_len]
+
+    update_geoip: str = input('| [U]: Update Geo-IP database '
+                              '[E]: Existing Geo-IP database '
+                              '[default=E]: ').strip().lower()
+    if update_geoip == 'u':
+        update_geoip_db.update()
+
+    active_tasks: int = int(input('| Number of active tasks? '
+                                  '[default=100]: ').strip())
+    if active_tasks is not int:
+        active_tasks = 100
+
+    timeout: int = int(input('| Timeout of tasks in second? '
+                             '[default=3]: ').strip())
+    if timeout is not int:
+        timeout = 3
+
+    print(f'|{75 * "_"}')
+
     resolver = aiodns.DNSResolver()
-    semaphore = asyncio.Semaphore(100)
-    domain_names = open_csv(length)
+    semaphore = asyncio.Semaphore(active_tasks)
     tasks = list()
-    for domain_name in domain_names:
-        tasks.append(dns_resolve(semaphore, resolver, domain_name))
+
+    for domain_name in domain_chunk_list:
+        tasks.append(dns_resolve(semaphore, resolver, domain_name, timeout))
     return tasks
-
-
-def setup_logger():
-    """
-    This function initiates  logger from logger_config using dictConfig
-    """
-    config_file = os.path.join(this_path, 'logger_config.json')
-    with open(config_file) as cf:
-        config = json.load(cf)
-
-    logging.config.dictConfig(config)
-    queue_handler = logging.getHandlerByName('queue_handler')
-    if queue_handler is not None:
-        queue_handler.listener.start()
-        atexit.register(queue_handler.listener.stop)
 
 
 async def main() -> None:
     setup_signal_handler()
-    setup_logger()
+    setup_logger.setup_logger_for_this_file()
 
-    '''Protect main task from being cancelled, otherwise it will cancel
+    '''Protects main task from being cancelled, otherwise it will cancel
     all other tasks'''
     protect(asyncio.current_task())
 
-    length = int(input('How many domains: '))
-
-    tasks = create_tasks(length)
+    domain_list: list[str] = open_csv()
+    tasks = create_tasks(domain_list)
 
     results = []
 
@@ -199,12 +224,20 @@ async def main() -> None:
                 results.append(result)
     finally:
         save(get_results(results))
+        print('| Saved data into output.db ✓')
+        logger.info('Saving data into output.db was successfully')
+        database_convert()
+        print('Database successfully converted to csv file')
+        logger.info('Database successfully converted to csv file')
 
 
 if __name__ == '__main__':
     try:
         asyncio.run(main())
-    except (KeyboardInterrupt, asyncio.CancelledError):
-        logger.error('App was interrupt')
+    except KeyboardInterrupt as e:
+        logger.exception(f'App was interrupt by press ctrl+c: {e}')
+    except asyncio.CancelledError as e:
+        logger.exception(f'TLS-Checker was cancelled: {e}')
     else:
         logger.info('App was finished gracefully')
+        print('| App was finished gracefully')
