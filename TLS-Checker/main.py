@@ -14,6 +14,7 @@ import update_geoip_db
 from save_to_database import save
 from geo_ip import geo_information
 from csv_convertor import database_convert
+from ascii_welcome import print_acii
 
 
 this_path: str = os.getcwd()
@@ -108,13 +109,7 @@ def open_csv() -> list:
 
     logger.info('Successfully extracted domains from input.csv')
     print('| Successfully extracted domains from input.csv')
-    print(f'| {74 * "-"}')
-
     return domain_list
-
-
-def save_csv():
-    ...
 
 
 def get_results(result_list: list) -> list[tuple]:
@@ -166,6 +161,12 @@ def create_tasks(domain_list: list) -> list:
     except ValueError as ve:
         logger.error(f'Invalid value, just integer is acceptable: {ve}')
         domain_chunk_len = domain_list_length
+    else:
+        if domain_chunk_len > domain_list_length:
+            domain_chunk_len = domain_list_length
+        elif domain_chunk_len < 0:
+            domain_chunk_len = 0
+        logger.info(f'domain_chunk was set to {domain_chunk_len}')
 
     random_normal: str = input('| [R]: Randomized search  '
                                '[N]: Normal search '
@@ -182,17 +183,29 @@ def create_tasks(domain_list: list) -> list:
     if update_geoip == 'u':
         update_geoip_db.update()
 
-    active_tasks: int = int(input('| Number of active tasks? '
-                                  '[default=100]: ').strip())
-    if active_tasks is not int:
+    try:
+        active_tasks: int = int(input('| Number of active tasks?'
+                                      ' [default=100]: ').strip())
+    except ValueError as ve:
+        logger.error(f'Invalid value for active tasks: {ve}')
         active_tasks = 100
+    else:
+        if active_tasks < 0:
+            active_tasks = 0
+        logger.info(f'semaphore or active tasks was set to {active_tasks}')
 
-    timeout: int = int(input('| Timeout of tasks in second? '
-                             '[default=3]: ').strip())
-    if timeout is not int:
+    try:
+        timeout: int = int(input('| Timeout of tasks in second? '
+                                 '[default=3]: ').strip())
+    except ValueError as ve:
+        logger.error(f'Invalid value for timeout: {ve}')
         timeout = 3
+    else:
+        if timeout < 0:
+            timeout = 0
+        logger.info(f'timeout was set to {timeout}')
 
-    print(f'|{75 * "_"}')
+    print(f'|{95 * "_"}')
 
     resolver = aiodns.DNSResolver()
     semaphore = asyncio.Semaphore(active_tasks)
@@ -227,11 +240,15 @@ async def main() -> None:
         print('| Saved data into output.db ✓')
         logger.info('Saving data into output.db was successfully')
         database_convert()
-        print('Database successfully converted to csv file')
+        print('| Database successfully converted to csv file')
         logger.info('Database successfully converted to csv file')
 
 
 if __name__ == '__main__':
+    try:
+        print_acii()
+    except Exception as e:
+        logger.error(e)
     try:
         asyncio.run(main())
     except KeyboardInterrupt as e:
@@ -240,4 +257,4 @@ if __name__ == '__main__':
         logger.exception(f'TLS-Checker was cancelled: {e}')
     else:
         logger.info('App was finished gracefully')
-        print('| App was finished gracefully')
+        print('| App finished gracefully')
