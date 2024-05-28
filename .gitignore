@@ -4,7 +4,7 @@ venv
 *.txt
 *.zip
 .idea/
-TLS-Checker/csv/*
+TLS-Checker/csv/*.csv
 TLS-Checker/*.mmdb
 TLS-Checker/__pycache__
 TLS-Checker/logs/*.log*
