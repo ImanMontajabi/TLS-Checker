@@ -3,11 +3,9 @@ import sys
 import logging.handlers
 
 import requests
-from setup_logger import setup_logger_for_this_file
 
 
 this_path: str = os.getcwd()
-setup_logger_for_this_file()
 logger = logging.getLogger(__name__)
 api: str = 'https://api.github.com/repos/P3TERX/GeoLite.mmdb/releases/latest'
 repo_url: str = 'https://github.com/P3TERX/GeoLite.mmdb'
@@ -35,17 +33,13 @@ def get_info() -> dict:
                     if asset['name'] != 'GeoLite2-Country.mmdb':
                         db_info[asset['name']] = asset['browser_download_url']
         else:
-            logger.error(f'{repo_url} is unavailable with '
-                         f'status code: {response.status_code}')
             print(f'| Downloading files from this repository {repo_url}'
                   f'was unsuccessful > status code: {response.status_code}')
             sys.exit(1)
     except requests.RequestException as e:
-        logger.exception(f'Request "{repo_url}" failed > error: {e}')
         print(f'| An error occurred: {e}')
         sys.exit(1)
     else:
-        logger.info(f'Successfully retrieved data from {repo_url} > {db_info}')
         print(f'| Successfully extracted data from github repository ✓')
         return db_info
 
@@ -62,12 +56,9 @@ def download_db(db_info: dict) -> None:
                     for chunk in response.iter_content(chunk_size=10 * 1024):
                         file.write(chunk)
         except Exception as e:
-            logger.error(f'Downloading of {name}: {url} '
-                         f'failed with error: {e}')
             print(f'| Downloading process of {name} '
                   f'encountered an error: {e}')
         else:
-            logger.info(f'{name}: {url} successfully downloaded')
             print(f'| Downloading {name} is completed ✓')
 
 

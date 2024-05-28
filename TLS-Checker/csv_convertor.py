@@ -4,17 +4,12 @@ import sqlite3
 from sys import exit
 import logging.handlers
 
-from setup_logger import setup_logger_for_this_file
-
 
 """
 This script converts SQLite database tables to csv files.
 The database file is assumed to be named 'RapGoat.db' and located in the
 current working directory. The csv files will be saved in a 'csv' subdirectory
 within the current working directory."""
-
-setup_logger_for_this_file()
-logger = logging.getLogger(__name__)
 
 
 def get_database_dir() -> str:
@@ -32,7 +27,6 @@ def check_database(db_dir: str) -> None:
     """Check if the database file exists in the specified directory."""
     if not os.path.isfile(db_dir):
         print('| There is no such database in this directory!')
-        logger.error(f'There is no such database in this directory!')
         exit(1)
 
 
@@ -51,7 +45,6 @@ def convertor(database_dir: str) -> None:
         cur = con.cursor()
     except sqlite3.DatabaseError as e:
         print(f'| Data base connection was unsuccessful > {e}')
-        logger.error(f'Data base connection was unsuccessful > {e}')
         exit(1)
     else:
         # table_list includes all table name that includes in our database
@@ -66,8 +59,6 @@ def convertor(database_dir: str) -> None:
             all_data = cur.fetchall()
         except sqlite3.DatabaseError as e:
             print(f'| Data export from {table_name} was unsuccessful > {e}')
-            logger.error(f'Exporting process from {table_name}'
-                         f' was unsuccessful > {e}')
             exit(1)
         else:
             '''According to PEP 249, this read-only attribute is a sequence of 
@@ -82,8 +73,6 @@ def convertor(database_dir: str) -> None:
         if not os.path.exists(this_dir + '/csv'):
             print(f'| "csv" directory does\'nt exist.'
                   f'\nNow is created automatically...')
-            logger.warning(f'"/csv" directory does\'nt exist.'
-                           f'\nNow is created automatically...')
             csv_dir: str = os.path.join(this_dir, 'csv')
             os.mkdir(csv_dir)
 
@@ -103,10 +92,8 @@ def convertor(database_dir: str) -> None:
                     writer.writerow(data_with_none)
         except IOError as e:
             print(f'| convertor > {e}')
-            logger.exception(f'converting encountered an error: {e}')
         else:
             print(f'| Data exported from {table_name} successfully ✓')
-            logger.info(f'Successfully converted')
 
     con.close()
 
@@ -118,7 +105,6 @@ def get_table_names(cur: sqlite3.Cursor) -> list:
         ''')
     except sqlite3.Error as e:
         print(f'| get_table_name > failed to retrieve table names > {e}')
-        logger.error(f'Retrieving data from table failed: {e}')
         exit(1)
     else:
         return cur.fetchall()
