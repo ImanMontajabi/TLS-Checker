@@ -1,6 +1,6 @@
 import os
 import csv
-import time
+# import time
 import signal
 import asyncio
 import logging.handlers
@@ -35,7 +35,7 @@ def shutdown(sig: signal.Signals) -> None:
 
     for task in task_to_cancel:
         task.cancel()
-        time.sleep(0.0001)
+        # time.sleep(0.0001)
 
     logger.info(f'Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
     print(f'\n| Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')

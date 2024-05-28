@@ -1,9 +1,0 @@
-venv
-*.json
-*.csv
-*.txt
-*.zip
-.idea/
-TLS-Checker/*.mmdb
-TLS-Checker/__pycache__
-TLS-Checker/logs/*.log
