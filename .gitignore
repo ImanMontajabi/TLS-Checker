@@ -5,5 +5,3 @@ venv
 .idea/
 TLS-Checker/*.mmdb
 TLS-Checker/__pycache__
-TLS-Checker/csv
-TLS-Checker/logs

@@ -18,7 +18,11 @@ def save(query_data: list[tuple]) -> None:
             asn INTEGER,
             asn_organ TEXT,
             iso_code INTEGER,
-            country TEXT
+            country TEXT,
+            cipher TEXT,
+            tls_version TEXT,
+            issuer_organ TEXT,
+            ping TEXT
             )
         ''')
 
@@ -30,8 +34,12 @@ def save(query_data: list[tuple]) -> None:
                 asn,
                 asn_organ,
                 iso_code,
-                country
-            ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                country,
+                cipher,
+                tls_version,
+                issuer_organ,
+                ping
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', query_data)
     except sqlite3.DatabaseError as e:
         print(f'Database connection was unsuccessful: {e}')
