@@ -1,4 +1,30 @@
 def get_options(domain_list_length: int) -> dict:
+    """
+   Retrieves options from the user for customizing the scanning process.
+
+   Args:
+       domain_list_length (int): The length of the domain list
+       obtained from the CSV file.
+
+   Returns:
+       dict: A dictionary containing the options selected by the user.
+
+   Notes:
+       The function prompts the user to input various options
+       for the scanning process,
+       including:
+       - Number of domains to scan in each chunk.
+       - Whether to perform randomized search or normal search.
+       - Whether to update the Geo-IP database or use the existing one.
+       - Number of active tasks to run concurrently.
+       - Number of maximum workers (auto by default).
+       - Timeout for the tls_info function in seconds.
+       - Timeout for the ping function in seconds.
+       - Timeout for tasks in seconds.
+       The function handles user input validation and provides default
+       values for options
+       if no input or invalid input is provided.
+   """
     options = dict()
     domain_chunk_len: int = domain_list_length
     active_tasks: int = 100

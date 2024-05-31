@@ -46,12 +46,18 @@ from csv_convertor import database_convert
 
 
 this_path: str = os.getcwd()
-''' The task inside this value doesn't stop for a gracefully stopping
- in this case we add main coroutine in  _DO_NOT_CANCEL_TASKS'''
+
+# The task inside this value doesn't stop for a gracefully stopping
+# in this case we add main coroutine in  _DO_NOT_CANCEL_TASKS
+
 _DO_NOT_CANCEL_TASKS: set[asyncio.Task] = set()
 
 
 def get_ping(domain_name: str, timeout: int) -> str:
+    """
+    Send one ping to destination address(domain_name) with the given timeout.
+    """
+
     try:
         delay = ping(domain_name, unit='ms', timeout=timeout)
     except:
@@ -63,6 +69,21 @@ def get_ping(domain_name: str, timeout: int) -> str:
     return delay
 
 def tls_info(hostname: str, timeout: int) -> dict:
+    """
+    Creates an SSLContext object with default settings, establishes a socket
+    connection to the specified hostname over port 443 with the given timeout,
+    and retrieves the TLS version, cryptographic details,
+    and issuer of its certificate.
+
+    Args:
+        hostname (str): The domain name to connect to.
+        timeout (int): The timeout duration for the socket connection.
+
+    Returns:
+        dict: A dictionary containing the TLS version, cipher used, and issuer
+              organization of the certificate.
+    """
+
     try:
         context = ssl.create_default_context()
 
@@ -87,22 +108,46 @@ async def get_info(
         dns_timeout,
         tls_timeout,
         ping_timeout) -> dict:
+    """
+    Retrieves various information about a domain, including IPv4, IPv6, ASN,
+    ASN Organization, country ISO code, and country name from DNS. It also runs
+    tls_info() in another thread using an event loop and executor. The function
+    restricts active tasks in the event loop to the semaphore count.
+
+    Args:
+        semaphore (asyncio.Semaphore): Semaphore to limit concurrent tasks.
+        resolver (aiodns.DNSResolver): DNS resolver for querying domain information.
+        domain_name (str): The domain name to retrieve information for.
+        executor (concurrent.futures.Executor): Executor for running blocking
+            operations in separate threads.
+        dns_timeout (int): Timeout for DNS queries.
+        tls_timeout (int): Timeout for TLS information retrieval.
+        ping_timeout (int): Timeout for ping operations.
+
+    Returns:
+        dict: A dictionary containing the retrieved information for the domain,
+        including:
+            - 'ipv4': List of IPv4 addresses or None
+            - 'ipv6': List of IPv6 addresses or None
+            - 'tls_version': TLS version used by the domain
+            - 'cipher': Cipher used by the domain
+            - 'issuer_organ': Issuer organization of the domain's certificate
+            - 'ping': Ping response time from the domain's server
+    """
+
     ipv4: list[str | None] = list()
     ipv6: list[str | None] = list()
     info: dict[str, str | None | list[str]] = dict()
     result: dict[str, dict[str, str | None | list[str]]] = dict()
 
     async with semaphore:
-        ''' ... '''
         loop = asyncio.get_running_loop()
-        # instead of semaphore you can insert another value
         tls_info_list = await loop.run_in_executor(
             executor,
             tls_info,
             domain_name,
             tls_timeout)
 
-        ''' ... '''
         info['ping'] = await loop.run_in_executor(
             executor,
             get_ping,
@@ -147,6 +192,29 @@ async def get_info(
 
 
 def extract_results(result_list: list) -> list[tuple]:
+    """
+    Extracts retrieved data from the get_info() function and organizes it into a
+    list of tuples. Each tuple contains the information for a single domain.
+
+    Args:
+        result_list (list): a list of dictionaries where each dictionary
+        contains the retrieved information for a domain.
+
+    Returns:
+        query_data: a compatible format of list includes tuples. including:
+        - domain_name (str)
+        - ipv4 (str or None)
+        - ipv6 (str or None)
+        - asn (str or None)
+        - asn_organ (str or None)
+        - iso_code (str or None)
+        - country (str or None)
+        - cipher (str or None)
+        - tls_version (str or None)
+        - issuer_organ (str or None)
+        - domain_ping (str or None)
+    """
+
     asn = None
     asn_organ = None
     iso_code = None
@@ -187,6 +255,17 @@ def extract_results(result_list: list) -> list[tuple]:
 
 
 def create_tasks(domain_list: list) -> list:
+    """
+    Creates a list of tasks for retrieving information about domains.
+
+    Args:
+        domain_list (list): A list of domain names to retrieve information for.
+
+    Returns:
+        list: A list of asyncio Tasks for retrieving information about the
+              specified domains.
+    """
+
     domain_list_length: int = len(domain_list)
     options = get_options(domain_list_length)
     domain_chunk_len = options['domain_chunk_len']
@@ -227,11 +306,17 @@ def create_tasks(domain_list: list) -> list:
                 ping_timeout
             ))
 
-
     return tasks
 
 
 def open_csv() -> list:
+    """
+    Reads a CSV file containing domain names and extracts them into a list.
+
+    Returns:
+        list: A list of domain names extracted from the CSV file.
+    """
+
     domain_list: list[str] = []
     print('| Start reading input.csv')
     csv_path: str = os.path.join(this_path, 'input.csv')
@@ -245,35 +330,19 @@ def open_csv() -> list:
     return domain_list
 
 
-def shutdown(sig: signal.Signals) -> None:
-    print(f' >>> Received {sig.name} signal')
-
-    all_tasks = asyncio.all_tasks()
-    task_to_cancel = all_tasks - _DO_NOT_CANCEL_TASKS
-
-    # bottleneck of cancelling or killing processes!
-    for task in task_to_cancel:
-        task.cancel()
-
-    print(f'\n| Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
-
-
-def setup_signal_handler() -> None:
-    """This function gets running loop and add specific signals to the loop."""
-
-    loop = asyncio.get_running_loop()
-
-    '''
-    SIGHUP: Hangup Signal - connection lost
-    SIGTERM: Termination Signal - completely done and termination
-    SIGINT: Interrupt Signal - interrupt running process by pressing ctrl+c
-    first "sig" is variable of for-loop (received signal) and second "sig" is 
-    the argument passed to shutdown'''
-    for sig in (signal.SIGHUP, signal.SIGTERM, signal.SIGINT):
-        loop.add_signal_handler(sig, shutdown, sig)
-
-
 async def main() -> None:
+    """
+    Main entry point of the program. Orchestrates the execution of tasks to
+    retrieve information about domains from a CSV file, saves the results, and
+    converts the database to a CSV file.
+
+    Raises:
+        KeyboardInterrupt: If the user interrupts the program execution.
+
+    Notes:
+        The main task is protected from being cancelled to avoid cancelling
+        all other tasks.
+    """
     setup_signal_handler()
 
     '''Protects main task from being cancelled, otherwise it will cancel
@@ -299,6 +368,57 @@ async def main() -> None:
         print('| Database successfully converted to csv file ✓')
 
 
+def shutdown(sig: signal.Signals) -> None:
+    """
+    Signal handler function to gracefully shut down the program in response to
+    received signals.
+
+    Args:
+        sig (signal.Signals): The signal received by the program.
+
+    Notes:
+        This function cancels all tasks except those protected by
+        _DO_NOT_CANCEL_TASKS set.
+
+    Raises:
+        asyncio.CancelledError: If a task is cancelled during the shutdown
+        process.
+
+    """
+    print(f' >>> Received {sig.name} signal')
+
+    all_tasks = asyncio.all_tasks()
+    task_to_cancel = all_tasks - _DO_NOT_CANCEL_TASKS
+
+    # bottleneck of cancelling or killing processes!
+    for task in task_to_cancel:
+        task.cancel()
+
+    print(f'\n| Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
+
+
+def setup_signal_handler() -> None:
+    """
+    Sets up signal handlers for specific signals to gracefully handle program
+    termination.
+
+    Notes:
+        This function adds signal handlers for the following signals:
+        - SIGHUP: Hangup Signal (connection lost)
+        - SIGTERM: Termination Signal (complete termination)
+        - SIGINT: Interrupt Signal (interrupt running process by pressing
+          ctrl+c)
+
+        The second argument passed to the shutdown function is the received
+        signal.
+    """
+
+    loop = asyncio.get_running_loop()
+
+    for sig in (signal.SIGHUP, signal.SIGTERM, signal.SIGINT):
+        loop.add_signal_handler(sig, shutdown, sig)
+
+
 if __name__ == '__main__':
     try:
         print_acii()
@@ -311,4 +431,5 @@ if __name__ == '__main__':
     except asyncio.CancelledError:
         print(f'| TLS-Checker was cancelled')
     else:
-        print('| App finished gracefully ✓')
+        print('| App finished completely ✓')
+

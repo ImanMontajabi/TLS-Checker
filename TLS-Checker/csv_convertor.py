@@ -9,14 +9,17 @@ import logging.handlers
 This script converts SQLite database tables to csv files.
 The database file is assumed to be named 'RapGoat.db' and located in the
 current working directory. The csv files will be saved in a 'csv' subdirectory
-within the current working directory."""
+within the current working directory.
+"""
 
 
 def get_database_dir() -> str:
     """
     Get the directory of the database file.
-    :return:
-        str: The absolute path to the database file."""
+
+    Returns:
+        str: The absolute path to the database file.
+    """
 
     path = os.getcwd()
     database_dir = os.path.join(path, 'output.db')
@@ -24,7 +27,13 @@ def get_database_dir() -> str:
 
 
 def check_database(db_dir: str) -> None:
-    """Check if the database file exists in the specified directory."""
+    """
+    Check if the database file exists in the specified directory.
+
+    Args:
+        db_dir (str): The path to the database file.
+    """
+
     if not os.path.isfile(db_dir):
         print('| There is no such database in this directory!')
         exit(1)
@@ -33,10 +42,13 @@ def check_database(db_dir: str) -> None:
 def convertor(database_dir: str) -> None:
     """
     Convert the database tables to csv files.
-    :arg:
+
+    Args:
         database_dir (str): The path to the database file.
-    :raise:
-        SystemExit: If database connection or data export fails."""
+
+    Raises:
+        SystemExit: If database connection or data export fails.
+    """
 
     check_database(database_dir)
 
@@ -99,6 +111,15 @@ def convertor(database_dir: str) -> None:
 
 
 def get_table_names(cur: sqlite3.Cursor) -> list:
+    """
+    Retrieve the names of all tables in the database.
+
+    Args:
+        cur (sqlite3.Cursor): The cursor object for executing SQL queries.
+
+    Returns:
+        list: A list of table names in the database.
+    """
     try:
         cur.execute('''
             SELECT name FROM sqlite_master WHERE type='table';
@@ -111,6 +132,9 @@ def get_table_names(cur: sqlite3.Cursor) -> list:
 
 
 def database_convert():
-    """The main function to execute the database to csv conversion process."""
+    """
+    Execute the database to CSV conversion process.
+    """
+
     database_dir = get_database_dir()
     convertor(database_dir)
