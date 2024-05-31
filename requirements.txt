@@ -6,3 +6,4 @@ aiofile==3.8.8
 requests==2.31.0
 aiohttp==3.9.5
 aioping==0.4.0
+ping3==4.0.8

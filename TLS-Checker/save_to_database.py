@@ -7,7 +7,7 @@ path = os.getcwd()
 
 def save(query_data: list[tuple]) -> None:
     try:
-        con = sqlite3.connect(f'{path}/output.db')
+        con = sqlite3.connect(os.path.join(path, 'output.db'))
         cur = con.cursor()
 
         cur.execute('''
@@ -41,8 +41,8 @@ def save(query_data: list[tuple]) -> None:
                 ping
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', query_data)
-    except sqlite3.DatabaseError as e:
-        print(f'Database connection was unsuccessful: {e}')
+    except Exception as e:
+        print(f'Database connection was failed: {e}')
         exit(1)
     else:
         con.commit()

@@ -12,6 +12,7 @@ import tqdm.asyncio
 from ping3 import ping
 
 import update_geoip_db
+from options import get_options
 from save_to_database import save
 from geo_ip import geo_information
 from ascii_welcome import print_acii
@@ -22,9 +23,9 @@ this_path: str = os.getcwd()
 _DO_NOT_CANCEL_TASKS: set[asyncio.Task] = set()
 
 
-def get_ping(domain_name: str) -> str:
+def get_ping(domain_name: str, timeout: int) -> str:
     try:
-        delay = ping(domain_name, unit='ms', timeout=5)
+        delay = ping(domain_name, unit='ms', timeout=timeout)
     except:
         delay = None
     else:
@@ -33,11 +34,11 @@ def get_ping(domain_name: str) -> str:
 
     return delay
 
-def tls_info(hostname: str) -> list:
+def tls_info(hostname: str, timeout: int) -> dict:
     try:
         context = ssl.create_default_context()
 
-        with socket.create_connection((hostname, 443), timeout=2) as sock:
+        with socket.create_connection((hostname, 443), timeout=timeout) as sock:
             with context.wrap_socket(sock, server_hostname=hostname) as ssock:
                 version = ssock.version()
                 cipher = ssock.cipher()[0]
@@ -47,7 +48,7 @@ def tls_info(hostname: str) -> list:
         cipher = None
         issuer = None
 
-    return [version, cipher, issuer]
+    return {'version': version, 'cipher': cipher, 'issuer': issuer}
 
 
 async def get_info(
@@ -55,54 +56,66 @@ async def get_info(
         resolver,
         domain_name,
         executor,
-        timeout=3) -> dict:
+        dns_timeout,
+        tls_timeout,
+        ping_timeout) -> dict:
     ipv4: list[str | None] = list()
     ipv6: list[str | None] = list()
     info: dict[str, str | None | list[str]] = dict()
-    output: dict[str, dict[str, str | None | list[str]]] = dict()
+    result: dict[str, dict[str, str | None | list[str]]] = dict()
 
     async with semaphore:
         ''' ... '''
         loop = asyncio.get_running_loop()
         # instead of semaphore you can insert another value
-        tls_info_list = await loop.run_in_executor(executor, tls_info, domain_name)
-
-        info['tls_version'] = tls_info_list[0]
-        info['cipher'] = tls_info_list[1]
-        info['issuer_organ'] = tls_info_list[2]
+        tls_info_list = await loop.run_in_executor(
+            executor,
+            tls_info,
+            domain_name,
+            tls_timeout)
 
         ''' ... '''
-        info['ping'] = await loop.run_in_executor(executor, get_ping, domain_name)
+        info['ping'] = await loop.run_in_executor(
+            executor,
+            get_ping,
+            domain_name,
+            ping_timeout)
+
+        info['tls_version'] = tls_info_list['version']
+        info['cipher'] = tls_info_list['cipher']
+        info['issuer_organ'] = tls_info_list['issuer']
+
 
         try:
             resp = await asyncio.wait_for(
-                resolver.query(domain_name, 'A'), timeout=timeout)
+                resolver.query(domain_name, 'A'), timeout=dns_timeout)
             for ip in resp:
                 if ip:
                     ipv4.append(ip.host)
+            # This statement checks if ipv4 list is empty
             if not ipv4:
-                ipv4.append(None)
+                info['ipv4'] = None
+        except:
+            info['ipv4'] = None
+        else:
             info['ipv4'] = ipv4
 
+        try:
             resp = await asyncio.wait_for(
-                resolver.query(domain_name, 'AAAA'), timeout=timeout)
+                resolver.query(domain_name, 'AAAA'), timeout=dns_timeout)
             for ip in resp:
                 if ip:
                     ipv6.append(ip.host)
             if not ipv6:
-                ipv6.append(None)
-            info['ipv6'] = ipv6
-            output[domain_name] = info
-        except asyncio.CancelledError:
-            pass
-        except aiodns.error.DNSError:
-            pass
-        except asyncio.TimeoutError:
-            pass
+                info['ipv6'] = None
         except:
-            pass
+            info['ipv6'] = None
         else:
-            return output
+            info['ipv6'] = ipv6
+
+        result[domain_name] = info
+
+        return result
 
 
 def extract_results(result_list: list) -> list[tuple]:
@@ -115,14 +128,14 @@ def extract_results(result_list: list) -> list[tuple]:
     '''Extract domain and ipv4, ipv6 and ... saves into query_data list'''
     for result in result_list:
         domain_name: str = list(result.keys())[0]
-        ipv4_list = list(result.values())[0]['ipv4']
-        ipv6_list = list(result.values())[0]['ipv6']
+        ipv4_list: list | None = list(result.values())[0]['ipv4']
+        ipv6_list: list | None = list(result.values())[0]['ipv6']
         cipher = list(result.values())[0]['cipher']
         tls_version = list(result.values())[0]['tls_version']
         issuer_organ = list(result.values())[0]['issuer_organ']
-        ping = list(result.values())[0]['ping']
+        domain_ping = list(result.values())[0]['ping']
 
-        if None not in ipv4_list:
+        if ipv4_list:
             ipv4 = ','.join(ipv4_list)
             '''this gets geo info from geo_ip module'''
             geo_info = geo_information(ipv4_list[0])
@@ -133,74 +146,59 @@ def extract_results(result_list: list) -> list[tuple]:
         else:
             ipv4 = None
 
-
-        if None not in ipv6_list:
+        if ipv6_list:
             ipv6 = ','.join(ipv6_list)
         else:
             ipv6 = None
 
         query_data.append(
             (domain_name, ipv4, ipv6, asn, asn_organ, iso_code, country,
-             cipher, tls_version, issuer_organ, ping))
+             cipher, tls_version, issuer_organ, domain_ping))
+
     return query_data
 
 
 def create_tasks(domain_list: list) -> list:
     domain_list_length: int = len(domain_list)
-    print(f'| input.csv includes {domain_list_length} domains')
+    options = get_options(domain_list_length)
+    domain_chunk_len = options['domain_chunk_len']
 
-    try:
-        domain_chunk_len: int = int(input(
-            f'| How many of them? [default={domain_list_length}]: ').strip())
-    except ValueError:
-        domain_chunk_len = domain_list_length
-    else:
-        if domain_chunk_len > domain_list_length:
-            domain_chunk_len = domain_list_length
-        elif domain_chunk_len < 0:
-            domain_chunk_len = 0
-
-    random_normal: str = input('| [R]: Randomized search  '
-                               '[N]: Normal search '
-                               '[default=N]: ').strip().lower()
-    if random_normal == 'r':
+    if options['random_normal']:
         shuffle(domain_list)
-        domain_chunk_list: list = domain_list[0: domain_chunk_len]
+        domain_chunk_list = domain_list[0: domain_chunk_len]
     else:
-        domain_chunk_list: list = domain_list[0: domain_chunk_len]
+        domain_chunk_list = domain_list[0: domain_chunk_len]
 
-    update_geoip: str = input('| [U]: Update Geo-IP database '
-                              '[E]: Existing Geo-IP database '
-                              '[default=E]: ').strip().lower()
-    if update_geoip == 'u':
+    if options['update_geoip']:
         update_geoip_db.update()
 
-    try:
-        active_tasks: int = int(input('| Number of active tasks?'
-                                      ' [default=100]: ').strip())
-    except ValueError:
-        active_tasks = 100
-    else:
-        if active_tasks < 0:
-            active_tasks = 0
+    active_tasks = options['active_tasks']
 
-    try:
-        timeout: int = int(input('| Timeout of tasks in second? '
-                                 '[default=3]: ').strip())
-    except ValueError:
-        timeout = 3
-    else:
-        if timeout < 0:
-            timeout = 0
+    tls_timeout = options['tls_timeout']
+    ping_timeout = options['ping_timeout']
+    dns_timeout =  options['dns_timeout']
+
+    thread_pool_max_workers = options['max_workers']
 
     print(f'|{95 * "_"}')
 
     resolver = aiodns.DNSResolver()
     semaphore = asyncio.Semaphore(active_tasks)
-    executor = ThreadPoolExecutor(max_workers=200)
+    executor = ThreadPoolExecutor(max_workers=thread_pool_max_workers)
 
-    tasks = [get_info(semaphore, resolver, domain_name, executor, timeout)
-             for domain_name in domain_chunk_list if domain_name is not None]
+    tasks = list()
+    for domain_name in domain_chunk_list:
+        if domain_name is not None:
+            tasks.append(get_info(
+                semaphore,
+                resolver,
+                domain_name,
+                executor,
+                dns_timeout,
+                tls_timeout,
+                ping_timeout
+            ))
+
 
     return tasks
 
