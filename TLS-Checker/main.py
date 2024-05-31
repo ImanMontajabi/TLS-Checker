@@ -1,3 +1,29 @@
+"""
+This Python script is designed to gather information about a list of domains
+provided in a CSV file named input.csv The script collects various details
+about each domain, including:
+
+- IPv4 and IPv6 addresses
+- Autonomous System Number (ASN)
+- ASN organization
+- ISO code of the country
+- Country name
+- Cipher
+- SSL/TLS version
+- Issuer organization
+- Ping response time from the domain's server
+
+The domains are expected to be listed in a single column within the CSV file
+(e.g., "google.com", "yahoo.com", etc.). Please note that the script's ability
+to retrieve certain information, such as ping response time, may depend on the
+quality and speed of your internet connection and your system resources.
+
+This script utilizes asynchronous and concurrency methods to speed up the
+scanning process. Additionally, instead of using an API, it leverages the
+MaxMind GeoIP database for geo information.
+"""
+
+
 import os
 import csv
 import ssl
@@ -20,6 +46,8 @@ from csv_convertor import database_convert
 
 
 this_path: str = os.getcwd()
+''' The task inside this value doesn't stop for a gracefully stopping
+ in this case we add main coroutine in  _DO_NOT_CANCEL_TASKS'''
 _DO_NOT_CANCEL_TASKS: set[asyncio.Task] = set()
 
 
