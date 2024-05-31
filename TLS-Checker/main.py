@@ -8,8 +8,8 @@ from random import shuffle
 from concurrent.futures import ThreadPoolExecutor
 
 import aiodns
-import aioping
 import tqdm.asyncio
+from ping3 import ping
 
 import update_geoip_db
 from save_to_database import save
@@ -22,15 +22,16 @@ this_path: str = os.getcwd()
 _DO_NOT_CANCEL_TASKS: set[asyncio.Task] = set()
 
 
-async def get_ping(domain_name: str) -> str:
+def get_ping(domain_name: str) -> str:
     try:
-        delay = await aioping.ping(dest_addr=domain_name, timeout=10) * 1000
+        delay = ping(domain_name, unit='ms', timeout=5)
     except:
-        delay_ms = None
+        delay = None
     else:
-        delay_ms = f'{delay:4.0f}'
+        if delay is not None:
+            delay = f'{delay:4.0f}'
 
-    return delay_ms
+    return delay
 
 def tls_info(hostname: str) -> list:
     try:
@@ -41,7 +42,7 @@ def tls_info(hostname: str) -> list:
                 version = ssock.version()
                 cipher = ssock.cipher()[0]
                 issuer = ssock.getpeercert()['issuer'][1][0][1]
-    except Exception:
+    except:
         version = None
         cipher = None
         issuer = None
@@ -62,7 +63,7 @@ async def get_info(
 
     async with semaphore:
         ''' ... '''
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         # instead of semaphore you can insert another value
         tls_info_list = await loop.run_in_executor(executor, tls_info, domain_name)
 
@@ -71,7 +72,7 @@ async def get_info(
         info['issuer_organ'] = tls_info_list[2]
 
         ''' ... '''
-        info['ping'] = await get_ping(domain_name)
+        info['ping'] = await loop.run_in_executor(executor, get_ping, domain_name)
 
         try:
             resp = await asyncio.wait_for(
@@ -196,7 +197,7 @@ def create_tasks(domain_list: list) -> list:
 
     resolver = aiodns.DNSResolver()
     semaphore = asyncio.Semaphore(active_tasks)
-    executor = ThreadPoolExecutor(max_workers=10)
+    executor = ThreadPoolExecutor(max_workers=200)
 
     tasks = [get_info(semaphore, resolver, domain_name, executor, timeout)
              for domain_name in domain_chunk_list if domain_name is not None]
