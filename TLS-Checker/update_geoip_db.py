@@ -1,13 +1,11 @@
 import os
 import sys
 import time
-import logging.handlers
 
 import requests
 
 
 this_path: str = os.getcwd()
-logger = logging.getLogger(__name__)
 api: str = 'https://api.github.com/repos/P3TERX/GeoLite.mmdb/releases/latest'
 repo_url: str = 'https://github.com/P3TERX/GeoLite.mmdb'
 
@@ -27,13 +25,11 @@ def get_info() -> dict:
     db_info: dict[str, str] = dict()
     while True:
         try:
-            logger.info(f'trying to get info from {repo_url}')
-            print(f'| Getting info from github repository: {repo_url}')
+            print(f'\r| Getting info from github repository: {repo_url}', end='')
             response = requests.get(api, timeout=30)
             if response.status_code == 200:
                 assets: list = response.json().get('assets', [])
                 if None in assets:
-                    logger.error(f'There is no file in repo > release > assets')
                     print(f'| There is no file in this repository'
                           f' {repo_url} > release > assets')
                     sys.exit(1)
@@ -46,11 +42,11 @@ def get_info() -> dict:
                       f'was unsuccessful > status code: {response.status_code}')
                 sys.exit(1)
         except Exception as e:
-            print(f'| An error occurred: {e}')
-            print('| Retry after 20 seconds ...')
+            print(f'\r| An error occurred: {e}')
+            print('| Retry after 20 seconds ...', end='')
             time.sleep(20)
         else:
-            print(f'| Successfully extracted data from github repository ✓')
+            print(f'\r| Successfully extracted data from github repository ✓')
             break
 
     return db_info
@@ -75,19 +71,19 @@ def download_db(db_info: dict) -> None:
         url: str = db_name_url[1]
         while True:
             try:
-                print(f'| Start downloading {name} ...')
+                print(f'\r| Start downloading {name} ...', end='')
                 with requests.get(url, stream=True) as response:
                     db_path: str = os.path.join(this_path, name)
                     with open(db_path, mode='wb') as file:
                         for chunk in response.iter_content(chunk_size=10 * 1024):
                             file.write(chunk)
             except Exception as e:
-                print(f'| Downloading process of {name} '
-                      f'encountered an error: {e}')
-                print('| Retry after 20 seconds ...')
+                print(f'\r| Downloading process of {name} '
+                      f'encountered an error: {e}'
+                      f'\n| Retry after 20 seconds ...', end='')
                 time.sleep(20)
             else:
-                print(f'| Downloading {name} is completed ✓')
+                print(f'\r| Downloading {name} is completed ✓')
                 break
 
 

@@ -1,6 +1,6 @@
 import os
-from sys import exit
 import sqlite3
+from sys import exit
 
 path = os.getcwd()
 

@@ -23,18 +23,16 @@ scanning process. Additionally, instead of using an API, it leverages the
 MaxMind GeoIP database for geo information.
 """
 
-
 import os
 import csv
 import ssl
-import socket
 import signal
+import socket
 import asyncio
 from random import shuffle
 from concurrent.futures import ThreadPoolExecutor
 
 import aiodns
-import tqdm.asyncio
 from ping3 import ping
 
 import update_geoip_db
@@ -318,7 +316,7 @@ def open_csv() -> list:
     """
 
     domain_list: list[str] = []
-    print('| Start reading input.csv')
+    print('| Start reading input.csv ...', end='')
     csv_path: str = os.path.join(this_path, 'input.csv')
 
     with open(csv_path) as csv_file:
@@ -326,7 +324,7 @@ def open_csv() -> list:
         for row in rows:
             domain_list.append(row[0])
 
-    print('| Successfully extracted domains from input.csv')
+    print('\r| Extracted domains from input.csv')
     return domain_list
 
 
@@ -354,16 +352,22 @@ async def main() -> None:
 
     results: list = []
 
-    '''wait for all tasks to finish and show progress bar'''
-
+    '''waits for all tasks to finish and show progress bar, returning the
+    result of each completed task'''
+    total_tasks = len(tasks)
+    progress = 0
     try:
-        for f in tqdm.asyncio.tqdm.as_completed(tasks):
+        print(f'| Initiating the process ...', end='')
+        for f in asyncio.as_completed(tasks):
             result = await f
             if result:
                 results.append(result)
+            progress += 1
+            print(f"\r| Progress: {progress}/{total_tasks} tasks completed",
+                  end="")
     finally:
         save(extract_results(results))
-        print('| Saved data into output.db ✓')
+        print('\r| Saved data into output.db ✓')
         database_convert()
         print('| Database successfully converted to csv file ✓')
 
@@ -386,7 +390,7 @@ def shutdown(sig: signal.Signals) -> None:
 
     """
 
-    print(f' >>> Received {sig.name} signal')
+    print(f'\n| Received {sig.name} signal')
 
     all_tasks = asyncio.all_tasks()
     task_to_cancel = all_tasks - _DO_NOT_CANCEL_TASKS
@@ -395,7 +399,8 @@ def shutdown(sig: signal.Signals) -> None:
     for task in task_to_cancel:
         task.cancel()
 
-    print(f'\n| Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
+    print(f'| Cancelled {len(task_to_cancel)} out of {len(all_tasks)}')
+    print(f'\n| Saving data ...', end='')
 
 
 def setup_signal_handler() -> None:
@@ -432,5 +437,4 @@ if __name__ == '__main__':
     except asyncio.CancelledError:
         print(f'| TLS-Checker was cancelled')
     else:
-        print('| App finished completely ✓')
-
+        print('| App finished successfully ✓')
