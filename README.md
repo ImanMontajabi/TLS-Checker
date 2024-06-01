@@ -67,7 +67,7 @@ The results are saved in a SQLite database named `output.db` and a CSV file name
 - ping timout | tls_info timeout (DNS Connection) | task timeout
 
 > [!IMPORTANT]
->  The longer you set the time, the program may require more time to execute, but the active tasks time should always be greater than ping and TLS. Default formula: task timeout = ping timeout + tls_info + 5
+>  The longer you set the time, the program may require more time to execute, but the active tasks time should always be greater than ping and TLS. Default formula: `task timeout = ping timeout + tls_info + 5`
 
 - You can update the database every few days to get the latest and most up-to-date changes
 - You can find the `result.csv` in `csv` directory
