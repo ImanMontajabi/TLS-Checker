@@ -6,7 +6,7 @@
 
 <p align="center">This Python script is designed to gather information about a list of domains.</p>
 
-[About](https://github.com/ImanMontajabi/TLS-Checker?tab=readme-ov-file#about) | [Output](https://github.com/ImanMontajabi/TLS-Checker/blob/main/README.md#output) | [Screenshot](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#screenshot) | [Download & Install](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#download--install) | [How to use](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#how-to-use)
+[About](https://github.com/ImanMontajabi/TLS-Checker/blob/main/README.md#about) | [Output](https://github.com/ImanMontajabi/TLS-Checker/blob/main/README.md#output) | [Screenshot](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#screenshot) | [Download & Install](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#download--install) | [How to use](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#how-to-use)
 
 ## About
 
