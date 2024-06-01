@@ -42,3 +42,12 @@ The results are saved in a SQLite database named `output.db` and a CSV file name
  </p>
 
  ## Download & Install
+
+- It is strongly recommended to use `pypy3.10` instead of the official Python interpreter for significantly better performance
+  - Download Links: https://www.pypy.org/download.html
+- After configuring the pip module or virtualenv (optional), you need to install the required modules from requests.txt.
+  - official document: https://doc.pypy.org/en/latest/install.html#installing-more-modules
+
+## How to use
+
+1. Run `main.py` as the starting point; then you will be asked a series of questions.
