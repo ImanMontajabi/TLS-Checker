@@ -1,6 +1,6 @@
 .venv
 .idea
 ./TLS-Checker/*.mmdb
-./TLS-Checker/__pycache__/
+./TLS-Checker/__pycache__
 ./TLS-Checker/*.db
 ./TLS-Checker/csv/*.csv
