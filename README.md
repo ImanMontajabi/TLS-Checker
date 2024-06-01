@@ -7,4 +7,17 @@
 <h1 align="center">TLS-Checker</h1>
 
 
-<p align="center">V2 soon... 🚀️</p>
+<p align="center">This Python script is designed to gather information about a list of domains</p>
+
+
+The script collects various details about each domain, including:
+
+- IPv4 and IPv6 addresses
+- Autonomous System Number (ASN)
+- ASN organization
+- ISO code of the country
+- Country name
+- Cipher
+- SSL/TLS version
+- Issuer organization
+- Ping response time from the domain's server
