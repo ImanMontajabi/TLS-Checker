@@ -12,7 +12,7 @@
 
 ## About
 
-The script collects various details about each domain, including:
+The script collects various details about each domain, or rather domain names in first column of `input.csv` including:
 
 - IPv4
 - IPv6
@@ -29,6 +29,9 @@ The script collects various details about each domain, including:
 
 The results are saved in a SQLite database named output.db and a CSV file named results.csv. I've also provided an example below:
 
+
 | domain_name | ipv4 | ipv6 | asn | asn_organ | iso_code | country | cipher | tls_version | issuer_organ | ping |
 |-------------|------|------|-----|-----------|----------|---------|--------|-------------|--------------|------| 
 | nvidia.com | 34.194.97.138 | NULL | 14618 | AMAZON-AES | US | United States | ECDHE-RSA-AES128-GCM-SHA256 | TLSv1.2 | Amazon | NULL |
+| intel.com | 13.91.95.74 | NULL | 8075 | MICROSOFT-CORP-MSN-AS-BLOCK | US | United States | TLS_AES_256_GCM_SHA384 | TLSv1.3 | Greater Manchester | NULL |
+| dreamhost.com | 3.163.24.68 | 2600:9000:260f:e400:1d:5c4:5c40:93a1 | 16509 | AMAZON-02 | US | United States | TLS_AES_128_GCM_SHA256 | TLSv1.3 | Amazon | 266 |
