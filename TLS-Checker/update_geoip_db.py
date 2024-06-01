@@ -38,7 +38,7 @@ def get_info() -> dict:
                         if asset['name'] != 'GeoLite2-Country.mmdb':
                             db_info[asset['name']] = asset['browser_download_url']
             else:
-                print(f'| Downloading files from this repository {repo_url}'
+                print(f'\n| Downloading files from this repository {repo_url}'
                       f'was unsuccessful > status code: {response.status_code}')
                 sys.exit(1)
         except Exception as e:
@@ -46,7 +46,8 @@ def get_info() -> dict:
             print('| Retry after 20 seconds ...', end='')
             time.sleep(20)
         else:
-            print(f'\r| Successfully extracted data from github repository ✓')
+            print(f'\n| Successfully extracted'
+                  f' data from {repo_url} repository ✓')
             break
 
     return db_info
@@ -83,7 +84,8 @@ def download_db(db_info: dict) -> None:
                       f'\n| Retry after 20 seconds ...', end='')
                 time.sleep(20)
             else:
-                print(f'\r| Downloading {name} is completed ✓')
+                print(f'\n| Downloading {name} from {repo_url} '
+                      f'is completed ✓')
                 break
 
 

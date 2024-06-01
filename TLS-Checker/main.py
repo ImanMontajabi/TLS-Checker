@@ -367,7 +367,7 @@ async def main() -> None:
                   end="")
     finally:
         save(extract_results(results))
-        print('\r| Saved data into output.db ✓')
+        print('\n| Saved data into output.db ✓')
         database_convert()
         print('| Database successfully converted to csv file ✓')
 
