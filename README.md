@@ -8,7 +8,7 @@
  
 <p align="center">This Python script is designed to gather information about a list of domains</p>
 
-[About](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#about) | [Output]() | [Screenshot]() | [Download & Install]() | [How to use]()
+[About](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#about) | [Output](https://github.com/ImanMontajabi/TLS-Checker/blob/main/README.md#output) | [Screenshot]() | [Download & Install]() | [How to use]()
 
 ## About
 
