@@ -8,7 +8,7 @@
  
 <p align="center">This Python script is designed to gather information about a list of domains</p>
 
-[About](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#about) | [Output](https://github.com/ImanMontajabi/TLS-Checker/blob/main/README.md#output) | [Screenshot](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#screenshot) | [Download & Install]() | [How to use]()
+[About](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#about) | [Output](https://github.com/ImanMontajabi/TLS-Checker/blob/main/README.md#output) | [Screenshot](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#screenshot) | [Download & Install](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#download--install) | [How to use](https://github.com/ImanMontajabi/TLS-Checker/edit/main/README.md#how-to-use)
 
 ## About
 
@@ -50,4 +50,24 @@ The results are saved in a SQLite database named `output.db` and a CSV file name
 
 ## How to use
 
-1. Run `main.py` as the starting point; then you will be asked a series of questions.
+- Run `main.py` as the starting point; then you will be asked a series of questions.
+- As the first question, you must declare how many of the available domain names in the `input.csv` file you want to choose.
+
+> [!IMPORTANT]
+> The more value you choose for this item the more resources your computer will consume.
+
+- Active tasks (Semaphore) defines a boundry for active tasks at the moment.
+- max workers should be double of active tasks but the default values is calculated in this approach:
+`Changed in version 3.8: Default value of max_workers is changed to min(32, os.cpu_count() + 4). This default value preserves at least 5 workers for I/O bound tasks. It utilizes at most 32 CPU cores for CPU bound tasks which release the GIL. And it avoids using very large resources implicitly on many-core machines.`
+
+> [!IMPORTANT]
+> The more values you choose for items the more resources your system will consume and probably freeze your computer
+
+
+- ping timout | tls_info timeout (DNS Connection) | task timeout
+
+> [!IMPORTANT]
+>  The longer you set the time, the program may require more time to execute, but the active tasks time should always be greater than ping and TLS. Default formula: task timeout = ping timeout + tls_info + 5
+
+- You can update the database every few days to get the latest and most up-to-date changes
+- You can find the `result.csv` in `csv` directory
