@@ -10,7 +10,7 @@
 
 ## About
 
-The script collects various details about each domain, or rather domain names in the first column of `input.csv`, including:
+The script collects various details about each domain, or rather domain names in the first column of `input.csv` including:
 
 - IPv4
 - IPv6
