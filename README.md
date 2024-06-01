@@ -12,7 +12,8 @@
 
 The script collects various details about each domain, including:
 
-- IPv4 and IPv6 addresses
+- IPv4
+- IPv6
 - Autonomous System Number (ASN)
 - ASN organization
 - ISO code of the country
