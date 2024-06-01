@@ -433,8 +433,8 @@ if __name__ == '__main__':
     try:
         asyncio.run(main())
     except KeyboardInterrupt as e:
-        print(f'App was interrupt by press ctrl+c: {e}')
+        print(f'| Process was interrupt by press ctrl+c: {e}')
     except asyncio.CancelledError:
         print(f'| TLS-Checker was cancelled')
     else:
-        print('| App finished successfully ✓')
+        print('| Process is finished successfully ✓')
