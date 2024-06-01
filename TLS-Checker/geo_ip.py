@@ -26,6 +26,7 @@ def geo_information(ip: str) -> list:
         address is not found,
         None values are appended to the list.
     """
+
     geo_info: list[str | int | None] = list()
     path = os.getcwd()
     with geoip2.database.Reader(f'{path}/GeoLite2-ASN.mmdb') as reader:

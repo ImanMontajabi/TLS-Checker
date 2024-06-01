@@ -37,6 +37,7 @@ def save(query_data: list[tuple]) -> None:
         If an error occurs during the database operation, the function prints
         an error message and exits with status code 1.
     """
+
     try:
         con = sqlite3.connect(os.path.join(path, 'output.db'))
         cur = con.cursor()

@@ -385,6 +385,7 @@ def shutdown(sig: signal.Signals) -> None:
         process.
 
     """
+
     print(f' >>> Received {sig.name} signal')
 
     all_tasks = asyncio.all_tasks()

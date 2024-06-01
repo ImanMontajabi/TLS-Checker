@@ -25,6 +25,7 @@ def get_options(domain_list_length: int) -> dict:
        values for options
        if no input or invalid input is provided.
    """
+
     options = dict()
     domain_chunk_len: int = domain_list_length
     active_tasks: int = 100
@@ -149,6 +150,5 @@ def get_options(domain_list_length: int) -> dict:
                 dns_timeout = ping_timeout + tls_timeout + 5
     finally:
         options['dns_timeout'] = dns_timeout
-
 
     return options

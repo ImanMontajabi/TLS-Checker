@@ -120,6 +120,7 @@ def get_table_names(cur: sqlite3.Cursor) -> list:
     Returns:
         list: A list of table names in the database.
     """
+
     try:
         cur.execute('''
             SELECT name FROM sqlite_master WHERE type='table';
