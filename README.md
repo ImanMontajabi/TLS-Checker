@@ -43,7 +43,7 @@ The results are saved in a SQLite database named `output.db` and a CSV file name
 
 - It is strongly recommended to use `PyPy 3.10` instead of the official Python interpreter for significantly better performance.
   - Download Links: [https://www.pypy.org/download.html](https://www.pypy.org/download.html)
-- After configuring the pip module or virtualenv (optional), you need to install the required modules from requests.txt.
+- After configuring the pip module or virtualenv (optional), you need to install the required modules from `requests.txt`
   - Official document: [https://doc.pypy.org/en/latest/install.html#installing-more-modules](https://doc.pypy.org/en/latest/install.html#installing-more-modules)
 
 ## How to use
