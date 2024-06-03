@@ -55,7 +55,7 @@ The results are saved in a SQLite database named `output.db` and a CSV file name
 > The higher the value you choose for this item, the more resources your computer will consume.
 
 - Active tasks (Semaphore) defines a boundary for active tasks at the moment.
-- `Max workers should be double of the number of active tasks`, for example if the number of tasks is 100, the number of workers should be 200, but the `default value (auto)` is calculated using this approach (Python document): "Changed in version 3.8: Default value of max_workers is changed to min(32, os.cpu_count() + 4). This default value reserves at least 5 workers for I/O-bound tasks. It utilizes at most 32 CPU cores for CPU-bound tasks which release the GIL. And it avoids implicitly using very large resources on many-core machines."
+- `Max workers should be double of the number of active tasks`, for example `if the number of tasks is 100, the number of workers should be 200`, but the `default value (auto)` is calculated using this approach (Python document): "Changed in version 3.8: Default value of max_workers is changed to min(32, os.cpu_count() + 4). This default value reserves at least 5 workers for I/O-bound tasks. It utilizes at most 32 CPU cores for CPU-bound tasks which release the GIL. And it avoids implicitly using very large resources on many-core machines."
 
 > [!IMPORTANT]
 > The more values you choose for items, the more resources your system will consume and may potentially freeze your computer.
